@@ -1,11 +1,9 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -13,9 +11,10 @@ import javafx.stage.Stage;
 import viewii.Cadastrar;
 import viewii.Login;
 import viewii.Perfil;
+import model.Usuario;
 
 public class LoginController {
-    ArqUsuario arqUsuario = new ArqUsuario();
+    Usuario user = new Usuario();
 
     @FXML
     private Button btCadastrar;
@@ -36,24 +35,57 @@ public class LoginController {
     {
         
         btEntrar.setOnMouseClicked((MouseEvent e)->{
-            validarLogin();
+            enviarInformacoesLogin();
+
+            if(user.validarLogin())
+            {
+                chamarPerfil();
+            }
+            else
+            {
+                user.msgLoginErro();
+            }
         });
 
         btEntrar.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
-                validarLogin();
+            
+            if(e.getCode() == KeyCode.ENTER)
+            {
+                enviarInformacoesLogin();
+
+                if(user.validarLogin())
+                {
+                    chamarPerfil();
+                }
+                else
+                    user.msgLoginErro();
+
             }
 
         });
 
         tfEmail.setOnKeyPressed((KeyEvent e)->{
             if (e.getCode() == KeyCode.ENTER)
-                validarLogin();
+            {
+                enviarInformacoesLogin();
+
+                if(user.validarLogin())
+                    chamarPerfil();
+                else
+                    user.msgLoginErro();
+            }
         });
 
         pfSenha.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER)
-                validarLogin();
+            {
+                enviarInformacoesLogin();
+                
+                if(user.validarLogin())
+                    chamarPerfil();
+                else
+                    user.msgLoginErro();
+            }
         });
 
         
@@ -67,20 +99,23 @@ public class LoginController {
         });
     
         btCadastrar.setOnMouseClicked((MouseEvent e)->{
-            System.out.println("Proxima tela");
             abreCadastrar();
         });
         btCadastrar.setOnKeyPressed((KeyEvent e)->{
-            abreCadastrar();
+            if(e.getCode() == KeyCode.ENTER)
+                abreCadastrar();
         });
     
 
     }
 
-    public void fechar()
+    public void enviarInformacoesLogin()
     {
-        Login.getStage().close();
+        user.setEmail(tfEmail.getText());
+        user.setSenha(pfSenha.getText());
     }
+
+
     public void abreCadastrar()
     {
         Cadastrar cadastrar = new Cadastrar();
@@ -92,26 +127,6 @@ public class LoginController {
         }
     }
 
-    public void validarLogin()
-    {
-        String dir = "usuario.txt";
-        String info = arqUsuario.read(dir);
-        String email = info.split(";")[2];
-        String senha = info.split(";")[3];
-        
-        if(tfEmail.getText().equals(email) && pfSenha.getText().equals(senha)){
-            chamarPerfil();            
-        }
-        else{
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Erro!");
-            alert.setHeaderText("Erro ao realizar tarefa!");
-            alert.setContentText("Email ou senha invalida!");
-            alert.show();
-        }
-        
-    }
-
     public void chamarPerfil()
     {
            Perfil perfil = new Perfil();
@@ -121,4 +136,10 @@ public class LoginController {
             } catch (Exception e) {
             }
     }
+    
+    public void fechar()
+    {
+        Login.getStage().close();
+    }
+
 }
