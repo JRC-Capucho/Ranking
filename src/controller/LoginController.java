@@ -52,7 +52,6 @@ public class LoginController {
             if(e.getCode() == KeyCode.ENTER)
             {
                 enviarInformacoesLogin();
-
                 if(user.validarLogin())
                 {
                     chamarPerfil();
@@ -109,12 +108,12 @@ public class LoginController {
 
     }
 
+
     public void enviarInformacoesLogin()
     {
         user.setEmail(tfEmail.getText());
         user.setSenha(pfSenha.getText());
     }
-
 
     public void abreCadastrar()
     {

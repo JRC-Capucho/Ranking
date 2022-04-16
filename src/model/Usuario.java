@@ -12,21 +12,27 @@ public class Usuario {
     private String senha;
     private String email;
     private String confirmarSenha;
-    private Map<String, String> usuarioAdd;
+    private  static Map<String, String> usuarioAdd = new HashMap<>();
 
     public Usuario(){
-    usuarioAdd = new HashMap<>();
     }
    
     public boolean validarLogin()
     {
-        if(usuarioAdd.get(email).equals(senha))
+        System.out.println(usuarioAdd);
+
+        if(usuarioAdd.containsKey(email) == false)
         {
-            System.out.println("True -- ");
+            return false;
+        }
+        else if(usuarioAdd.get(email).equals(senha))
+        {
             return true;
         }
-        System.out.println("False --");
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
     public void verificarSenha()
@@ -41,16 +47,11 @@ public class Usuario {
 
     public void verificarDuplicata()
     {
-        boolean existe = false;
-        for(String aux : usuarioAdd.keySet())
+        if(usuarioAdd.containsKey(email))
         {
-            if(email.equals(aux))
-            {
-                existe = true;
-                msgCadastroExistente();
-            }
+            msgCadastroExistente();
         }
-        if(existe != true)
+        else
         {
             cadastrar();
         }
@@ -98,6 +99,17 @@ public class Usuario {
         alert.show();
     }
 
+    /*
+    public void msgIrParaCadastro()
+    {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Deseja Cadastrar conta");
+        alert.setHeaderText("Email e senha invalidas");
+        alert.setContentText("Email ou senha não cadastrado");
+        alert.show();
+    }
+    */
+
     public int getId() {
         return id;
     }
@@ -137,5 +149,4 @@ public class Usuario {
     public void setConfirmarSenha(String confirmarSenha) {
         this.confirmarSenha = confirmarSenha;
     }
-
 }
