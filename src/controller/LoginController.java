@@ -111,7 +111,7 @@ public class LoginController {
 
     public void enviarInformacoesLogin()
     {
-        user.setEmail(tfEmail.getText());
+        user.setNome(tfEmail.getText());
         user.setSenha(pfSenha.getText());
     }
 

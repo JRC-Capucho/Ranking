@@ -16,16 +16,16 @@ public class Usuario {
 
     public Usuario(){
     }
-   
+  
     public boolean validarLogin()
     {
         System.out.println(usuarioAdd);
 
-        if(usuarioAdd.containsKey(email) == false)
+        if(usuarioAdd.containsKey(nome) == false)
         {
             return false;
         }
-        else if(usuarioAdd.get(email).equals(senha))
+        else if(usuarioAdd.get(nome).equals(senha))
         {
             return true;
         }
@@ -47,7 +47,7 @@ public class Usuario {
 
     public void verificarDuplicata()
     {
-        if(usuarioAdd.containsKey(email))
+        if(usuarioAdd.containsKey(nome))
         {
             msgCadastroExistente();
         }
@@ -59,7 +59,7 @@ public class Usuario {
         
     public void cadastrar()
     {
-        usuarioAdd.put(email, senha);
+        usuarioAdd.put(nome, senha);
         msgSucesso();
     }
 

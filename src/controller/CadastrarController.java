@@ -74,7 +74,6 @@ public class CadastrarController
     public void enviarInformacoesDeCadastro()
     {
         user.setNome(tfNome.getText());
-        user.setEmail(tfEmail.getText());
         user.setSenha(pfSenha.getText());
         user.setConfirmarSenha(pfConfirmarSenha.getText());
     }
