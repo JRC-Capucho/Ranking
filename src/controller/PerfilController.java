@@ -2,21 +2,17 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import viewii.Login;
 import viewii.Perfil;
 
 public class PerfilController {
-
-    @FXML
-    private ImageView Avatar;
-
-    @FXML
-    private Button btEditar;
-
+    
+    private String nomeNoPerfil;
     @FXML
     private Button btNovo;
 
@@ -24,25 +20,42 @@ public class PerfilController {
     private Button btSair;
 
     @FXML
-    private TextField tfEmail;
+    private Label lbUserName;
 
-    @FXML
-    private TextField tfNome;
-
-    public void initialize()
+    public void setUsername(String n)
     {
+      nomeNoPerfil = n;  
+    }
+
+     public void initialize()
+    {
+
         btSair.setOnMouseClicked((MouseEvent e)->{
-            fechar();
+            voltar();
         });
         
         btSair.setOnKeyPressed((KeyEvent e)->{
             if (e.getCode() == KeyCode.ENTER)
-                fechar();
+                voltar();
         });
     }
 
+    // Voltar para a tela de login
+    public void voltar()
+    {
+        Login login = new Login();
+        fechar();
+        try {
+            login.start(new Stage());
+        } catch (Exception e) {
+        }
+    }
+
+    // Fechar a tela
     public void fechar()
     {
         Perfil.getStage().close();
     }
+
+
 }

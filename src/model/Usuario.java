@@ -2,24 +2,23 @@ package model;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
 import java.util.Map;
 import java.util.HashMap;
+import controller.PerfilController;
 public class Usuario {
 
-    private int id;
+    //private int id;
+    private PerfilController pControl;
     private String nome;
     private String senha;
-    private String email;
     private String confirmarSenha;
-    private  static Map<String, String> usuarioAdd = new HashMap<>();
+    private static Map<String, String> usuarioAdd = new HashMap<>();
 
     public Usuario(){
     }
   
     public boolean validarLogin()
     {
-        System.out.println(usuarioAdd);
 
         if(usuarioAdd.containsKey(nome) == false)
         {
@@ -27,6 +26,8 @@ public class Usuario {
         }
         else if(usuarioAdd.get(nome).equals(senha))
         {
+            pControl = new PerfilController();
+            pControl.setUsername(nome);
             return true;
         }
         else
@@ -42,7 +43,9 @@ public class Usuario {
             verificarDuplicata();
         }
         else
+        {
             msgErro();
+        }
     }
 
     public void verificarDuplicata()
@@ -86,7 +89,7 @@ public class Usuario {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Erro!");
         alert.setHeaderText("Erro ao realizar tarefa!");
-        alert.setContentText("Email ou senha invalidas!");
+        alert.setContentText("Nome de usuário ou senha invalidas!");
         alert.show();
     }
 
@@ -94,8 +97,8 @@ public class Usuario {
     {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Informação");
-        alert.setHeaderText("Email ja existe");
-        alert.setContentText("Esse email já esta cadastrado");
+        alert.setHeaderText("Nome de usuário já existe");
+        alert.setContentText("Esse Nome de usuário já esta cadastrado");
         alert.show();
     }
 
@@ -109,14 +112,6 @@ public class Usuario {
         alert.show();
     }
     */
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;
@@ -132,14 +127,6 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getConfirmarSenha() {
