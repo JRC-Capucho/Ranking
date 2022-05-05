@@ -35,16 +35,15 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PerfilController">
+<VBox prefHeight="362.0" prefWidth="461.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PerfilController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="btSair" layoutX="572.0" layoutY="14.0" mnemonicParsing="false" text="Sair">
+            <Button fx:id="btSair" layoutX="276.0" layoutY="38.0" mnemonicParsing="false" text="Encerrar Sessão">
                <font>
                   <Font size="18.0" />
                </font>
@@ -52,7 +51,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btNovo" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Novo">
+            <Button fx:id="btNovo" layoutX="170.0" layoutY="138.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="124.0" text="Rank">
                <font>
                   <Font size="18.0" />
                </font>
@@ -60,26 +59,16 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="137.0" layoutY="115.0" text="Nome:">
+            <Label layoutX="30.0" layoutY="44.0" text="Bem vindo:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="tfNome" editable="false" layoutX="137.0" layoutY="142.0" prefHeight="25.0" prefWidth="302.0" />
-            <TextField fx:id="tfEmail" editable="false" layoutX="137.0" layoutY="200.0" prefHeight="25.0" prefWidth="302.0" />
-            <Label layoutX="137.0" layoutY="173.0" text="E-mail:">
+            <Label fx:id="lbUserName" layoutX="125.0" layoutY="44.0" text="Bem vindo:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btEditar" layoutX="481.0" layoutY="167.0" mnemonicParsing="false" text="Editar">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
          </children>
     </AnchorPane>
   </children>

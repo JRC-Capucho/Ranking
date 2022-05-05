@@ -29,7 +29,7 @@ public class LoginController {
     private PasswordField pfSenha;
 
     @FXML
-    private TextField tfEmail;
+    private TextField tfUserName;
 
     public void initialize()
     {
@@ -63,7 +63,7 @@ public class LoginController {
 
         });
 
-        tfEmail.setOnKeyPressed((KeyEvent e)->{
+        tfUserName.setOnKeyPressed((KeyEvent e)->{
             if (e.getCode() == KeyCode.ENTER)
             {
                 enviarInformacoesLogin();
@@ -111,7 +111,7 @@ public class LoginController {
 
     public void enviarInformacoesLogin()
     {
-        user.setNome(tfEmail.getText());
+        user.setNome(tfUserName.getText());
         user.setSenha(pfSenha.getText());
     }
 
