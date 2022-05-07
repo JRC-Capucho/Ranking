@@ -2,66 +2,57 @@ package model;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import java.util.Map;
-import java.util.HashMap;
-import controller.PerfilController;
+import java.util.ArrayList;
 public class Usuario {
 
-    private PerfilController pControl;
-    private String nome;
-    private String senha;
-    private String confirmarSenha;
-    private static Map<String, String> usuarioAdd = new HashMap<>();
+    private static ArrayList<Integer>id = new ArrayList<>();
+    private static int posicao;
+    private static ArrayList<String>apelido = new ArrayList<>();
+    private static ArrayList<String>senha = new ArrayList<>();
 
     public Usuario(){
     }
   
-    public boolean validarLogin()
+    public boolean validarLogin(String username, String pass)
     {
-
-        if(usuarioAdd.containsKey(nome) == false)
+        for (int i = 0; i < id.size(); i++)
         {
-            return false;
+            if(apelido.get(i).equals(username) && senha.get(i).equals(pass))
+                return true;   
         }
-        else if(usuarioAdd.get(nome).equals(senha))
-        {
-            pControl = new PerfilController();
-            pControl.setUsername(nome);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        msgLoginErro();
+        return false;
     }
 
-    public void verificarSenha()
+    
+    public void verificarDados(String pass, String confPass, String username)
     {
-        if(confirmarSenha.equals(senha))
+        boolean aux = false;
+        if(!confPass.equals(pass))
         {
-            verificarDuplicata();
+            msgErroSenhas();
         }
         else
         {
-            msgErro();
-        }
-    }
-
-    public void verificarDuplicata()
-    {
-        if(usuarioAdd.containsKey(nome))
-        {
-            msgCadastroExistente();
-        }
-        else
-        {
-            cadastrar();
+            for (int index = 0; index < apelido.size(); index++) 
+            {
+                if(apelido.get(index).equals(username))
+                {
+                    msgCadastroExistente();
+                    aux = true;
+                }
+            }
+            if(!aux)
+                cadastrar(pass,username);
         }
     }
         
-    public void cadastrar()
+    public void cadastrar(String pass,String username)
     {
-        usuarioAdd.put(nome, senha);
+        id.add(posicao);
+        apelido.add(username);
+        senha.add(pass);       
+        posicao++;
         msgSucesso();
     }
 
@@ -74,7 +65,7 @@ public class Usuario {
         alert.show();
     }
     
-    public void msgErro()
+    public void msgErroSenhas()
     {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Erro!");
@@ -112,27 +103,4 @@ public class Usuario {
     }
     */
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getConfirmarSenha() {
-        return confirmarSenha;
-    }
-
-    public void setConfirmarSenha(String confirmarSenha) {
-        this.confirmarSenha = confirmarSenha;
-    }
 }
