@@ -25,10 +25,18 @@ public class PerfilController {
     public void setUsername(String n)
     {
       nomeNoPerfil = n;  
+<<<<<<< HEAD
+=======
+        System.out.println(nomeNoPerfil);
+>>>>>>> 16178e907e9c78636e0bd60a46e5f9120e6fc09e
     }
 
      public void initialize()
     {
+<<<<<<< HEAD
+=======
+        lbUserName.setText(" " + nomeNoPerfil);
+>>>>>>> 16178e907e9c78636e0bd60a46e5f9120e6fc09e
 
         btSair.setOnMouseClicked((MouseEvent e)->{
             voltar();

@@ -35,9 +35,8 @@ public class LoginController {
     {
         
         btEntrar.setOnMouseClicked((MouseEvent e)->{
-            enviarInformacoesLogin();
 
-            if(user.validarLogin())
+            if(user.validarLogin(tfUserName.getText(),pfSenha.getText()))
             {
                 chamarPerfil();
             }
@@ -51,8 +50,7 @@ public class LoginController {
             
             if(e.getCode() == KeyCode.ENTER)
             {
-                enviarInformacoesLogin();
-                if(user.validarLogin())
+                if(user.validarLogin(tfUserName.getText(),pfSenha.getText()))
                 {
                     chamarPerfil();
                 }
@@ -66,9 +64,8 @@ public class LoginController {
         tfUserName.setOnKeyPressed((KeyEvent e)->{
             if (e.getCode() == KeyCode.ENTER)
             {
-                enviarInformacoesLogin();
 
-                if(user.validarLogin())
+                if(user.validarLogin(tfUserName.getText(),pfSenha.getText()))
                     chamarPerfil();
                 else
                     user.msgLoginErro();
@@ -78,9 +75,8 @@ public class LoginController {
         pfSenha.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER)
             {
-                enviarInformacoesLogin();
                 
-                if(user.validarLogin())
+                if(user.validarLogin(tfUserName.getText(),pfSenha.getText()))
                     chamarPerfil();
                 else
                     user.msgLoginErro();
@@ -108,6 +104,7 @@ public class LoginController {
 
     }
 
+<<<<<<< HEAD
 
     public void enviarInformacoesLogin()
     {
@@ -115,6 +112,8 @@ public class LoginController {
         user.setSenha(pfSenha.getText());
     }
 
+=======
+>>>>>>> 16178e907e9c78636e0bd60a46e5f9120e6fc09e
     public void abreCadastrar()
     {
         Cadastrar cadastrar = new Cadastrar();

@@ -30,9 +30,6 @@ public class CadastrarController
     private PasswordField pfSenha;
 
     @FXML
-    private TextField tfEmail;
-
-    @FXML
     private TextField tfNome;
 
     @FXML
@@ -40,14 +37,12 @@ public class CadastrarController
     {
 
         btCadastrar.setOnMouseClicked((MouseEvent e)->{
-            enviarInformacoesDeCadastro();
-            user.verificarSenha();
+                user.verificarDados(pfSenha.getText(),pfConfirmarSenha.getText(),tfNome.getText());
         });
         
         btCadastrar.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
-                enviarInformacoesDeCadastro();
-                user.verificarSenha();
+                user.verificarDados(pfSenha.getText(),pfConfirmarSenha.getText(),tfNome.getText());
             }
         });
 
@@ -64,20 +59,12 @@ public class CadastrarController
 
         pfConfirmarSenha.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
-                enviarInformacoesDeCadastro();
-                user.verificarSenha();
+                user.verificarDados(pfSenha.getText(),pfConfirmarSenha.getText(),tfNome.getText());
             }
         });
 
     }
     
-    public void enviarInformacoesDeCadastro()
-    {
-        user.setNome(tfNome.getText());
-        user.setSenha(pfSenha.getText());
-        user.setConfirmarSenha(pfConfirmarSenha.getText());
-    }
-
     // Voltar para a tela de login
     public void voltar()
     {
