@@ -104,16 +104,6 @@ public class LoginController {
 
     }
 
-<<<<<<< HEAD
-
-    public void enviarInformacoesLogin()
-    {
-        user.setNome(tfUserName.getText());
-        user.setSenha(pfSenha.getText());
-    }
-
-=======
->>>>>>> 16178e907e9c78636e0bd60a46e5f9120e6fc09e
     public void abreCadastrar()
     {
         Cadastrar cadastrar = new Cadastrar();
