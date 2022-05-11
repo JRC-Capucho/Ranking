@@ -10,7 +10,7 @@ public class CriarRanqueamento extends Application{
     private static Stage stage;
 
     public static void main(String[] args) {
-        launch(args);
+           launch(args);
     }
 
     @Override

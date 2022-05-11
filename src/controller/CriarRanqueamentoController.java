@@ -1,13 +1,17 @@
 package controller;
 
 
-import javafx.collections.FXCollections;
+import java.time.LocalDate;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -27,26 +31,39 @@ public class CriarRanqueamentoController
     private Button btAdicionarItem;
 
     @FXML
+    private ToggleGroup meuGrupo;
+
+    @FXML
+    private DatePicker dpEncerramentoRanque;
+
+    @FXML
     private Button btEnviar;
-    
+
     @FXML
-    private TableView<Items> tbItensRanqueados = new TableView<>();    
-    
-    //@FXML
-    //private TableColumn<Items, ButtonType> Botao;
-    
+    private Button btExcluir;
+
     @FXML
-    private TableColumn<Items, String> Itens;
+    private TableView<Items> tabela;    
+
+    @FXML
+    private TableColumn<Items, String> itens;
     
     @FXML
     private Button btVoltar;
     
     @FXML
     private TextField tfNomeDoRanque;
-    
+
+    @FXML
+    private RadioButton rbAberto;
+
+    @FXML
+    private RadioButton rbFechado; 
+
     public void initialize()
     {
-        oi();
+        itens.setCellValueFactory(new PropertyValueFactory<Items, String>("item"));
+        tabela.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         btVoltar.setOnMouseClicked((MouseEvent e)->{
             voltar();
@@ -58,23 +75,58 @@ public class CriarRanqueamentoController
         });        
         
         btAdicionarItem.setOnMouseClicked((MouseEvent e)->{
-            ranque.adicionarOpcoesDeEscolha();
             adicionarItemNaTabela();
         });    
+
+        btAdicionarItem.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER)
+                adicionarItemNaTabela(); 
+        });
         
-        
+        btExcluir.setOnMouseClicked((MouseEvent e)->{
+            removerItemDaTabela();
+        });
     }    
-    
-    public void adicionarItemNaTabela()
+
+    @FXML
+    void tipoRanque(ActionEvent event)
     {
-        String msg = "Jhon";        
-        // tbItensRanqueados.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        tbItensRanqueados.getItems().add(new Items(msg));
-        
+        if(rbAberto.isSelected())
+        {
+            System.out.println("Aberto");
+        }
+        if(rbFechado.isSelected())
+        {
+            System.out.println("Fechado");
+        }
     }
-    
-    
-    public void voltar()
+ 
+    @FXML
+    void getData(ActionEvent event)
+    {
+        LocalDate data = dpEncerramentoRanque.getValue();
+        System.out.println(data.toString());
+    }
+
+    private void adicionarItemNaTabela() 
+    {
+        Items ite = new Items(ranque.adicionarOpcoesDeEscolha());
+        ObservableList<Items> lista = tabela.getItems();
+
+        if(ite.getItem() != null)
+        {
+            lista.add(ite);
+            tabela.setItems(lista);
+        }
+    }
+
+    private void removerItemDaTabela()
+    {   
+        int posicao = tabela.getSelectionModel().getSelectedIndex();
+        tabela.getItems().remove(posicao);
+    }
+
+    private void voltar()
     {
         Perfil perfil = new Perfil();
         fechar();
@@ -84,26 +136,11 @@ public class CriarRanqueamentoController
         }
     }
     
-    public void fechar()
+    private void fechar()
     {
         CriarRanqueamento.getStage().close();
     }
     
-    public void oi(){
-
-    Itens.setCellValueFactory(new PropertyValueFactory<Items, String>("Itens"));
-    tbItensRanqueados.getColumns().add(Itens);
-
-    ObservableList<Items> list = FXCollections.observableArrayList(
-        new Items("nice"),
-        new Items("hello"),
-        new Items("turnaround")
-        );
-    
-        tbItensRanqueados.getItems().add(new Items("Billie Eilish"));
-        tbItensRanqueados.setItems(list);
-            
-    }
     
 }
 

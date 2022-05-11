@@ -8,7 +8,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 
-import controller.CriarRanqueamentoController;
 
 public class Ranque {
 
@@ -20,25 +19,8 @@ public class Ranque {
 
     public Ranque(){}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
-    public void adicionarOpcoesDeEscolha()
+    public String adicionarOpcoesDeEscolha()
     {
         TextInputDialog item = new TextInputDialog();
         item.setTitle("Itens");
@@ -47,10 +29,11 @@ public class Ranque {
 
         Optional<String> aux = item.showAndWait();
 
-        if(aux.isPresent())
+        if(aux.isPresent() && aux.get().length() > 0)
         {
-            System.out.println(" " + aux.get());
+            return aux.get();
         }
+        return null;
 
     }
     public void msgConfirmarExclusao()
