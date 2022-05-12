@@ -18,6 +18,7 @@ public class Login extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("../view/Login.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Iniciar Sessão");
         stage.show();
         setStage(stage);
     }

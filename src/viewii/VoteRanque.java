@@ -6,8 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Perfil extends Application {
+public class VoteRanque extends Application{
+
     private static Stage stage;
+
 
     public static void main(String[] args) {
         launch(args);
@@ -15,13 +17,12 @@ public class Perfil extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../view/Perfil.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Perfil");
-        stage.show();
-        setStage(stage);
-        
+     Parent root = FXMLLoader.load(getClass().getResource("../view/VotarRanque.fxml"));
+     Scene scene = new Scene(root);
+     stage.setScene(scene);
+     stage.setTitle("Ranque");
+     stage.show();
+     setStage(stage);
     }
 
     public static Stage getStage() {
@@ -29,7 +30,8 @@ public class Perfil extends Application {
     }
 
     public static void setStage(Stage stage) {
-        Perfil.stage = stage;
+        VoteRanque.stage = stage;
     }
 
+    
 }

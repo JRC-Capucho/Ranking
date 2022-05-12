@@ -83,7 +83,7 @@
                   <ToggleGroup fx:id="meuGrupo" />
                </toggleGroup></RadioButton>
             <RadioButton fx:id="rbFechado" layoutX="481.0" layoutY="126.0" mnemonicParsing="false" onAction="#tipoRanque" text="Fechado" toggleGroup="$meuGrupo" />
-            <Button fx:id="btEnviar" layoutX="379.0" layoutY="575.0" mnemonicParsing="false" text="Enviar" textAlignment="CENTER">
+            <Button fx:id="btCriar" layoutX="379.0" layoutY="575.0" mnemonicParsing="false" text="Criar" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -104,10 +104,13 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TableView fx:id="tabela" editable="true" layoutX="172.0" layoutY="172.0" prefHeight="387.0" prefWidth="487.0">
+            <TableView fx:id="tabela" layoutX="172.0" layoutY="172.0" prefHeight="387.0" prefWidth="487.0">
               <columns>
                 <TableColumn fx:id="itens" prefWidth="378.0" text="itens" />
               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
             <Button fx:id="btExcluir" layoutX="672.0" layoutY="305.0" mnemonicParsing="false" text="Excluir" textAlignment="CENTER">
                <font>

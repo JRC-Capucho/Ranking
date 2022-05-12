@@ -40,10 +40,6 @@ public class LoginController {
             {
                 chamarPerfil();
             }
-            else
-            {
-                user.msgLoginErro();
-            }
         });
 
         btEntrar.setOnKeyPressed((KeyEvent e)->{
@@ -54,8 +50,6 @@ public class LoginController {
                 {
                     chamarPerfil();
                 }
-                else
-                    user.msgLoginErro();
 
             }
 
@@ -67,8 +61,6 @@ public class LoginController {
 
                 if(user.validarLogin(tfUserName.getText(),pfSenha.getText()))
                     chamarPerfil();
-                else
-                    user.msgLoginErro();
             }
         });
 
@@ -78,8 +70,6 @@ public class LoginController {
                 
                 if(user.validarLogin(tfUserName.getText(),pfSenha.getText()))
                     chamarPerfil();
-                else
-                    user.msgLoginErro();
             }
         });
 
@@ -115,17 +105,18 @@ public class LoginController {
         }
     }
 
-    public void chamarPerfil()
+    private void chamarPerfil()
     {
-           Perfil perfil = new Perfil();
+            Perfil perfil = new Perfil();
             fechar();
             try {
                 perfil.start(new Stage());
             } catch (Exception e) {
             }
+            
     }
     
-    public void fechar()
+    private void fechar()
     {
         Login.getStage().close();
     }

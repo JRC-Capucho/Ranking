@@ -28,23 +28,33 @@ public class Usuario {
     public void verificarDados(String pass, String confPass, String username)
     {
         boolean aux = false;
-        if(!confPass.equals(pass))
+
+        if(username.length() > 0 && pass.length() > 0 && confPass.length() > 0)
         {
-            msgErroSenhas();
+            if(!confPass.equals(pass))
+            {
+                msgErroSenhas();
+                aux = true;
+            }
+            else
+            {
+                for (int index = 0; index < apelido.size(); index++) 
+                {
+                    if(apelido.get(index).equals(username))
+                    {
+                        msgCadastroExistente();
+                        aux = true;
+                    }
+                }
+            }
         }
         else
         {
-            for (int index = 0; index < apelido.size(); index++) 
-            {
-                if(apelido.get(index).equals(username))
-                {
-                    msgCadastroExistente();
-                    aux = true;
-                }
-            }
-            if(!aux)
-                cadastrar(pass,username);
+            msgErroVazio();
+            aux = true;
         }
+        if(!aux)
+            cadastrar(pass,username);
     }
         
     public void cadastrar(String pass,String username)
@@ -56,7 +66,7 @@ public class Usuario {
         msgSucesso();
     }
 
-    public void msgSucesso()
+    private void msgSucesso()
     {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Sucesso");
@@ -65,7 +75,7 @@ public class Usuario {
         alert.show();
     }
     
-    public void msgErroSenhas()
+    private void msgErroSenhas()
     {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Erro!");
@@ -74,7 +84,7 @@ public class Usuario {
         alert.show();
     }
 
-    public void msgLoginErro()
+    private void msgLoginErro()
     {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Erro!");
@@ -83,12 +93,21 @@ public class Usuario {
         alert.show();
     }
 
-    public void msgCadastroExistente()
+    private void msgCadastroExistente()
     {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Informação");
         alert.setHeaderText("Nome de usuário já existe");
-        alert.setContentText("Esse Nome de usuário já esta cadastrado");
+        alert.setContentText("Esse nome de usuário já esta cadastrado");
+        alert.show();
+    }
+
+    private void msgErroVazio()
+    {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle("Campos vazios");
+        alert.setHeaderText("Nome de usuário e senha vazios");
+        alert.setContentText("Por favor preencher os campos");
         alert.show();
     }
 

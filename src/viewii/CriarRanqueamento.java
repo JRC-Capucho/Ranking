@@ -10,7 +10,7 @@ public class CriarRanqueamento extends Application{
     private static Stage stage;
 
     public static void main(String[] args) {
-           launch(args);
+        launch(args);
     }
 
     @Override
@@ -18,6 +18,7 @@ public class CriarRanqueamento extends Application{
         Parent root = FXMLLoader.load(getClass().getResource("../view/CriarRanqueamento.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Criar Ranque");
         stage.show();
         setStage(stage);
     }

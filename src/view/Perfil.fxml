@@ -35,60 +35,22 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<<<<<<< HEAD
-=======
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
->>>>>>> 16178e907e9c78636e0bd60a46e5f9120e6fc09e
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-<VBox prefHeight="362.0" prefWidth="461.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PerfilController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PerfilController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="btSair" layoutX="276.0" layoutY="38.0" mnemonicParsing="false" text="Encerrar Sessão">
-=======
-<VBox prefHeight="497.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PerfilController">
-  <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Button fx:id="btSair" layoutX="22.0" layoutY="444.0" mnemonicParsing="false" text="Encerrar Sessão">
->>>>>>> 16178e907e9c78636e0bd60a46e5f9120e6fc09e
+            <Label layoutX="98.0" layoutY="14.0" text="Bem vindo">
                <font>
-                  <Font size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-<<<<<<< HEAD
-            <Button fx:id="btNovo" layoutX="170.0" layoutY="138.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="124.0" text="Rank">
-=======
-            <Button fx:id="btNovo" layoutX="46.0" layoutY="144.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="124.0" text="Criar">
->>>>>>> 16178e907e9c78636e0bd60a46e5f9120e6fc09e
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Label layoutX="30.0" layoutY="44.0" text="Bem vindo:">
-               <font>
-                  <Font size="18.0" />
+                  <Font size="48.0" />
                </font>
             </Label>
-            <Label fx:id="lbUserName" layoutX="125.0" layoutY="44.0" text="Bem vindo:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-<<<<<<< HEAD
-=======
-            <Button fx:id="btNovo1" layoutX="206.0" layoutY="144.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="124.0" text="Votar">
+            <Button fx:id="btCriarRanque" layoutX="92.0" layoutY="149.0" mnemonicParsing="false" text="Criar&#10;Ranque&#10;" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -96,7 +58,15 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <TabPane layoutX="438.0" layoutY="45.0" prefHeight="452.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+            <Button fx:id="btVotarRanque" layoutX="225.0" layoutY="149.0" mnemonicParsing="false" text="Votar&#10;Ranque&#10;" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <TabPane layoutX="440.0" prefHeight="400.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Amigos">
                   <content>
@@ -110,7 +80,14 @@
                 </Tab>
               </tabs>
             </TabPane>
->>>>>>> 16178e907e9c78636e0bd60a46e5f9120e6fc09e
+            <Button fx:id="btLogout" layoutX="117.0" layoutY="338.0" mnemonicParsing="false" text="Encessar Sessão" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
     </AnchorPane>
   </children>

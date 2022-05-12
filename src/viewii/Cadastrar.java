@@ -18,6 +18,7 @@ private static Stage stage;
         Parent root = FXMLLoader.load(getClass().getResource("../view/Cadastrar.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Cadastrar");
         stage.show();
         setStage(stage);
     }

@@ -1,54 +1,82 @@
 package controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import viewii.CriarRanqueamento;
 import viewii.Login;
 import viewii.Perfil;
-import viewii.Ranking;
+import viewii.VoteRanque;
 
-public class PerfilController {
-
-    @FXML
-    private Button btCriarRank;
+public class PerfilController implements Initializable{
 
     @FXML
-    private Button btSair;
+    private Button btCriarRanque;
 
     @FXML
-    private Button btVotarRanking;
+    private Button btLogout;
 
     @FXML
-    private Label lbUserName;
+    private Button btVotarRanque;
 
-    private String nomeNoPerfil;
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        btCriarRanque.setOnMouseClicked((MouseEvent e)->{
+            chamarCriarRanqueamento();
+        });
 
-    public void setUsername(String n)
-    {
-        nomeNoPerfil = n;  
-        System.out.println(nomeNoPerfil);
+        btCriarRanque.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER)
+                chamarCriarRanqueamento();
+        });
+    
+        btVotarRanque.setOnMouseClicked((MouseEvent e)->{
+            chamarVotarRanque();
+        });
+
+        btVotarRanque.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER)
+                chamarVotarRanque();
+        });
+
+        btLogout.setOnMouseClicked((MouseEvent e)->{
+            voltarLogin();
+        });
+
+        btLogout.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER)
+                voltarLogin();
+        });
     }
 
-    public void initialize()
+    private void chamarCriarRanqueamento()
     {
-        lbUserName.setText("Johnny");
-
-        btSair.setOnMouseClicked((MouseEvent e)->{
-            voltar();
-        });
-        
-        btSair.setOnKeyPressed((KeyEvent e)->{
-            if (e.getCode() == KeyCode.ENTER)
-                voltar();
-        });
+        CriarRanqueamento criarRanqueamento = new CriarRanqueamento();
+        fechar();
+        try {
+            criarRanqueamento.start(new Stage());
+        } catch (Exception e) {
+        }
     }
 
-    // Voltar para a tela de login
-    public void voltar()
+    private void chamarVotarRanque()
+    {
+        VoteRanque voteRanque = new VoteRanque();
+        fechar();
+        try {
+            voteRanque.start(new Stage());
+        } catch (Exception e) {
+        }
+    }
+
+    private void voltarLogin()
     {
         Login login = new Login();
         fechar();
@@ -58,21 +86,9 @@ public class PerfilController {
         }
     }
 
-    // Fechar a tela
-    public void fechar()
+    private void fechar()
     {
         Perfil.getStage().close();
     }
-
-    public void chamarRank()
-    {
-        Ranking ranking = new Ranking();
-        fechar();
-        try {
-            ranking.start(new Stage());
-        } catch (Exception e) {
-        }
-    }
-
 
 }

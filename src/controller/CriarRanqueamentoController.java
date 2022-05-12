@@ -2,9 +2,12 @@ package controller;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
@@ -12,12 +15,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 import viewii.CriarRanqueamento;
 import viewii.Perfil;
 import model.Ranque;
@@ -27,6 +30,8 @@ public class CriarRanqueamentoController
 {
     Ranque ranque = new Ranque();
 
+    private ArrayList<String> escolhas = new ArrayList<>();
+    
     @FXML
     private Button btAdicionarItem;
 
@@ -37,7 +42,7 @@ public class CriarRanqueamentoController
     private DatePicker dpEncerramentoRanque;
 
     @FXML
-    private Button btEnviar;
+    private Button btCriar;
 
     @FXML
     private Button btExcluir;
@@ -60,18 +65,20 @@ public class CriarRanqueamentoController
     @FXML
     private RadioButton rbFechado; 
 
+
     public void initialize()
     {
+
         itens.setCellValueFactory(new PropertyValueFactory<Items, String>("item"));
         tabela.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         btVoltar.setOnMouseClicked((MouseEvent e)->{
-            voltar();
+            voltarPerfil();
         });    
         
         btVoltar.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER)
-            voltar();
+                voltarPerfil();
         });        
         
         btAdicionarItem.setOnMouseClicked((MouseEvent e)->{
@@ -86,6 +93,16 @@ public class CriarRanqueamentoController
         btExcluir.setOnMouseClicked((MouseEvent e)->{
             removerItemDaTabela();
         });
+
+        btExcluir.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER)
+                removerItemDaTabela(); 
+        });
+
+        btCriar.setOnMouseClicked((MouseEvent e)->{
+            criarRanque();
+        });
+
     }    
 
     @FXML
@@ -105,7 +122,7 @@ public class CriarRanqueamentoController
     void getData(ActionEvent event)
     {
         LocalDate data = dpEncerramentoRanque.getValue();
-        System.out.println(data.toString());
+        System.out.println(data);
     }
 
     private void adicionarItemNaTabela() 
@@ -115,6 +132,7 @@ public class CriarRanqueamentoController
 
         if(ite.getItem() != null)
         {
+            escolhas.add(ite.getItem());
             lista.add(ite);
             tabela.setItems(lista);
         }
@@ -123,10 +141,24 @@ public class CriarRanqueamentoController
     private void removerItemDaTabela()
     {   
         int posicao = tabela.getSelectionModel().getSelectedIndex();
-        tabela.getItems().remove(posicao);
+        if(ranque.msgConfirmarExclusao())
+        {
+            tabela.getItems().remove(posicao);
+            escolhas.remove(posicao);
+        }
+        
     }
 
-    private void voltar()
+    private void criarRanque()
+    {
+        ranque.criarVetor(escolhas.size());
+        ranque.addEscolharDeVotos(escolhas);
+        ranque.setTituloaux(tfNomeDoRanque.getText());
+        msgRanqueCriado();
+        voltarPerfil();
+    }
+
+    private void voltarPerfil()
     {
         Perfil perfil = new Perfil();
         fechar();
@@ -134,7 +166,18 @@ public class CriarRanqueamentoController
             perfil.start(new Stage());
         } catch (Exception e) {
         }
+        
     }
+
+    private void msgRanqueCriado()
+    {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Criado Sucesso");
+        alert.setHeaderText("Realizado com sucesso!");
+        alert.setContentText("Ranque criada com sucesso!");
+        alert.showAndWait();
+    }
+   
     
     private void fechar()
     {

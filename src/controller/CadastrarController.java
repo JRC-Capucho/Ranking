@@ -66,7 +66,7 @@ public class CadastrarController
     }
     
     // Voltar para a tela de login
-    public void voltar()
+    private void voltar()
     {
         Login login = new Login();
         fechar();
@@ -78,7 +78,7 @@ public class CadastrarController
     }
 
     // Fechar a tela
-    public void fechar()
+    private void fechar()
     {
         Cadastrar.getStage().close();
     }
