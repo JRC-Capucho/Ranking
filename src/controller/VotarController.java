@@ -23,7 +23,7 @@ import viewii.VoteRanque;
 
 public class VotarController implements Initializable{
 
-    Ranque ranque = new Ranque();
+    private Ranque ranque = new Ranque();
 
     @FXML
     private Button btEnviar;
@@ -57,7 +57,6 @@ public class VotarController implements Initializable{
         itemCol.setCellValueFactory(new PropertyValueFactory<Items, String>("item"));
         itemColocacaoCol.setCellValueFactory(new PropertyValueFactory<Items, Integer>("posicaoItem"));
         
-        tfNomeRanque.setText(ranque.getTituloaux());
 
         tabelaVotos();
 
@@ -100,6 +99,7 @@ public class VotarController implements Initializable{
     
     private void votarNaEscolha()
     {
+        btEnviar.setDisable(true);
         int posicao = tbRanqueDeVotos.getSelectionModel().getSelectedIndex();
         ranque.contagemVotos(posicao);
         maisvotado();
@@ -108,10 +108,38 @@ public class VotarController implements Initializable{
     private void maisvotado()
     {
         int[] aux = ranque.getContVotos();
-        Arrays.sort(aux);
+        int[] saux = new int[aux.length];
+        int[] posicaoFinal = new int[aux.length];
+
+        for (int i = 0; i < saux.length; i++)
+            saux[i] = aux[i];
+            
+        Arrays.sort(saux);
+
+        int limitieDePosicaoMinima = saux.length-1;
+        int novaPosicao = 0;
+
+        for (int i = 0; i < saux.length; i++) 
+        {
+            if(limitieDePosicaoMinima>=0)
+            {
+                if(aux[i] == saux[limitieDePosicaoMinima])
+                {
+                    posicaoFinal[novaPosicao] = i;
+                    i = -1;
+                    novaPosicao++;
+                    limitieDePosicaoMinima--;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+
         for (int i = 0; i < aux.length; i++) {
             
-            Items ite = new Items(aux[i]);
+            Items ite = new Items(aux[posicaoFinal[i]]);
             ObservableList<Items> lista = tbRanqueResultado.getItems();
             
             lista.add(ite);

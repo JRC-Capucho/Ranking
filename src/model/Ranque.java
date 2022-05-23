@@ -17,18 +17,16 @@ public class Ranque {
     private static int indice = 0;
     private static int[] contVotos;
     private static String[] votos;
-    private static String tituloaux;
 
     public Ranque(){}
 
-    
-    
     
     public void contagemVotos(int posicao)
     {
         contVotos[posicao]++;
         System.out.println("voto ["+posicao+"] = " + contVotos[posicao]);
     }
+
     public void criarVetor(int n)
     {
         id.add(indice);
@@ -49,7 +47,6 @@ public class Ranque {
         for (int i = 0; i < n.size(); i++) 
             votos[i] = n.get(i);
     }
-
     
     public String adicionarOpcoesDeEscolha()
     {
@@ -106,11 +103,9 @@ public class Ranque {
     public void setContVotos(int[] contVotos) {
         Ranque.contVotos = contVotos;
     }
-    public String getTituloaux() {
-        return tituloaux;
-    }
 
-    public void setTituloaux(String tituloaux) {
-        Ranque.tituloaux = tituloaux;
+    public void adicionarNomeDoRanque(String n)
+    {
+        tituloDoRanque.add(n);
     }
 }

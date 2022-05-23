@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Usuario {
 
     private static ArrayList<Integer>id = new ArrayList<>();
-    private static int posicao;
+    private static int posicao = -1;
     private static ArrayList<String>apelido = new ArrayList<>();
     private static ArrayList<String>senha = new ArrayList<>();
 
@@ -59,10 +59,10 @@ public class Usuario {
         
     public void cadastrar(String pass,String username)
     {
+        ++posicao;
         id.add(posicao);
         apelido.add(username);
         senha.add(pass);       
-        posicao++;
         msgSucesso();
     }
 

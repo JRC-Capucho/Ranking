@@ -17,6 +17,8 @@ import viewii.VoteRanque;
 
 public class PerfilController implements Initializable{
 
+    private static Boolean restrigirAcesso = true;
+
     @FXML
     private Button btCriarRanque;
 
@@ -37,10 +39,12 @@ public class PerfilController implements Initializable{
                 chamarCriarRanqueamento();
         });
     
-        btVotarRanque.setOnMouseClicked((MouseEvent e)->{
-            chamarVotarRanque();
-        });
+        btVotarRanque.setDisable(restrigirAcesso);
 
+        btVotarRanque.setOnMouseClicked((MouseEvent e)->{
+              chamarVotarRanque();
+        });
+    
         btVotarRanque.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER)
                 chamarVotarRanque();
@@ -58,6 +62,8 @@ public class PerfilController implements Initializable{
 
     private void chamarCriarRanqueamento()
     {
+        restrigirAcesso = false;
+
         CriarRanqueamento criarRanqueamento = new CriarRanqueamento();
         fechar();
         try {

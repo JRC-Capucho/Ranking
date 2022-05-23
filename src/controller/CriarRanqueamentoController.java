@@ -1,8 +1,13 @@
 package controller;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,7 +36,9 @@ public class CriarRanqueamentoController
     Ranque ranque = new Ranque();
 
     private ArrayList<String> escolhas = new ArrayList<>();
-    
+    private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private LocalDateTime dataDiaAtual;
+
     @FXML
     private Button btAdicionarItem;
 
@@ -102,6 +109,11 @@ public class CriarRanqueamentoController
         btCriar.setOnMouseClicked((MouseEvent e)->{
             criarRanque();
         });
+        
+        btCriar.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER)
+                criarRanque(); 
+        });
 
     }    
 
@@ -119,10 +131,43 @@ public class CriarRanqueamentoController
     }
  
     @FXML
-    void getData(ActionEvent event)
+    void getData(ActionEvent event) throws ParseException
     {
-        LocalDate data = dpEncerramentoRanque.getValue();
-        System.out.println(data);
+        LocalDate dataCalendario = dpEncerramentoRanque.getValue();
+        dataDiaAtual = LocalDateTime.now();
+
+        String sdc = dataCalendario.toString();
+        String sdda = dtf.format(dataDiaAtual).toString();
+
+        converterDiaStringParaInt(sdc,sdda);
+               
+    }
+
+    private void converterDiaStringParaInt(String sdc, String sdda)
+    {
+ 
+        int calendarioAno = Integer.parseInt(sdc.substring(0,4));
+        int calendarioMes = Integer.parseInt(sdc.substring(6,7));
+        int calendarioDia = Integer.parseInt(sdc.substring(9,10));
+        
+        int atualAno = Integer.parseInt(sdda.substring(0,4));
+        int atualMes = Integer.parseInt(sdda.substring(6,7));
+        int atualDia = Integer.parseInt(sdda.substring(9,10));
+    
+        verificarData(calendarioAno,calendarioMes,calendarioDia,atualAno,atualMes,atualDia);
+    }
+
+    private void verificarData(int calendarioAno,int calendarioMes, int calendarioDia, int atualAno, int atualMes, int atualDia)
+    {
+        if(atualAno <= calendarioAno && atualMes <= calendarioMes && atualDia <= calendarioDia)
+        {
+            System.out.println("Nice guy");
+        }
+        else
+        {
+            System.out.println("Bad guy");
+        }
+ 
     }
 
     private void adicionarItemNaTabela() 
@@ -153,7 +198,7 @@ public class CriarRanqueamentoController
     {
         ranque.criarVetor(escolhas.size());
         ranque.addEscolharDeVotos(escolhas);
-        ranque.setTituloaux(tfNomeDoRanque.getText());
+        ranque.adicionarNomeDoRanque(tfNomeDoRanque.getText());
         msgRanqueCriado();
         voltarPerfil();
     }
@@ -183,7 +228,4 @@ public class CriarRanqueamentoController
     {
         CriarRanqueamento.getStage().close();
     }
-    
-    
 }
-
