@@ -41,6 +41,9 @@ public class VotarController implements Initializable{
     private TableColumn<Items, Integer> itemColocacaoCol;
 
     @FXML
+    private TableColumn<Items, String> itemMelhorRanqueadoCol;
+
+    @FXML
     private TableView<Items> tbRanqueDeVotos;
 
     @FXML
@@ -56,8 +59,10 @@ public class VotarController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         itemCol.setCellValueFactory(new PropertyValueFactory<Items, String>("item"));
         itemColocacaoCol.setCellValueFactory(new PropertyValueFactory<Items, Integer>("posicaoItem"));
+        itemMelhorRanqueadoCol.setCellValueFactory(new PropertyValueFactory<Items, String>("item"));
         
-
+        tfNomeRanque.setText(ranque.retornaNomeDoRanque());
+        tfNomeRanqueResultado.setText(ranque.retornaNomeDoRanque());
         tabelaVotos();
 
         btEnviar.setOnMouseClicked((MouseEvent e)->{
@@ -107,6 +112,7 @@ public class VotarController implements Initializable{
 
     private void maisvotado()
     {
+        String[] stringAux = ranque.getVotos();
         int[] aux = ranque.getContVotos();
         int[] saux = new int[aux.length];
         int[] posicaoFinal = new int[aux.length];
@@ -116,10 +122,10 @@ public class VotarController implements Initializable{
             
         Arrays.sort(saux);
 
-        int limitieDePosicaoMinima = saux.length-1;
+        int limitieDePosicaoMinima = aux.length-1;
         int novaPosicao = 0;
 
-        for (int i = 0; i < saux.length; i++) 
+        for (int i = 0; i < aux.length; i++) 
         {
             if(limitieDePosicaoMinima>=0)
             {
@@ -137,9 +143,12 @@ public class VotarController implements Initializable{
             }
         }
 
-        for (int i = 0; i < aux.length; i++) {
+        for (int i = 0; i < aux.length; i++) 
+        {
+            System.out.println(posicaoFinal[i]);
+            System.out.println(stringAux[posicaoFinal[i]]);
             
-            Items ite = new Items(aux[posicaoFinal[i]]);
+            Items ite = new Items(stringAux[posicaoFinal[i]],aux[posicaoFinal[i]]);
             ObservableList<Items> lista = tbRanqueResultado.getItems();
             
             lista.add(ite);

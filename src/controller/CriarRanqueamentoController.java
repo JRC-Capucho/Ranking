@@ -2,12 +2,10 @@ package controller;
 
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -121,13 +119,9 @@ public class CriarRanqueamentoController
     void tipoRanque(ActionEvent event)
     {
         if(rbAberto.isSelected())
-        {
             System.out.println("Aberto");
-        }
         if(rbFechado.isSelected())
-        {
             System.out.println("Fechado");
-        }
     }
  
     @FXML
@@ -159,15 +153,12 @@ public class CriarRanqueamentoController
 
     private void verificarData(int calendarioAno,int calendarioMes, int calendarioDia, int atualAno, int atualMes, int atualDia)
     {
-        if(atualAno <= calendarioAno && atualMes <= calendarioMes && atualDia <= calendarioDia)
-        {
-            System.out.println("Nice guy");
-        }
-        else
-        {
-            System.out.println("Bad guy");
-        }
- 
+        if(atualAno < calendarioAno)
+            System.out.println("Proximo ano");
+        if(atualAno == calendarioAno && atualMes < calendarioMes)
+            System.out.println("Mesmo ano, proximo mes");
+        if(atualAno == calendarioAno && atualMes == calendarioMes && atualDia <= calendarioDia)
+            System.out.println("Mesmo ano, mesmo mes, proximo dia ou mesmo dia");
     }
 
     private void adicionarItemNaTabela() 

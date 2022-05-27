@@ -14,6 +14,12 @@ public class Items {
         this.posicaoItem = pi;
     }
 
+    public Items(String it, int pi)
+    {
+        this.item = it;
+        this.posicaoItem = pi;
+    }
+
     public Integer getPosicaoItem() {
         return posicaoItem;
     }
