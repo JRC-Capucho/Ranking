@@ -109,8 +109,8 @@ public class VotarController implements Initializable{
     {
         int[] aux = ranque.getContVotos();
         Arrays.sort(aux);
-        for (int i = 0; i < aux.length; i++) {
-            
+        for (int i = 0; i < aux.length; i++) 
+        {
             Items ite = new Items(aux[i]);
             ObservableList<Items> lista = tbRanqueResultado.getItems();
             
