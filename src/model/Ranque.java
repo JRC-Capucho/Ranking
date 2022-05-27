@@ -80,13 +80,9 @@ public class Ranque {
         Optional<ButtonType> aux = alert.showAndWait();
         
         if(aux.get() == botaoSim)
-        {
             return true;
-        }
         else
-        {
             return false;
-        }
     }
 
     public String[] getVotos() {
@@ -107,5 +103,10 @@ public class Ranque {
     public void adicionarNomeDoRanque(String n)
     {
         tituloDoRanque.add(n);
+    }
+
+    public String retornaNomeDoRanque()
+    {
+        return tituloDoRanque.get(0);
     }
 }
