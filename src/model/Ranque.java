@@ -14,40 +14,25 @@ public class Ranque {
 
     private static ArrayList<String> tituloDoRanque = new ArrayList<>();
     private static ArrayList<Integer> id = new ArrayList();
-    private static int indice = 0;
-    private static int[] contVotos;
-    private static String[] votos;
-
+    private static ArrayList<Integer> contVotos = new ArrayList<>();
+    private static ArrayList<String> votos = new ArrayList<>();
+    
+    
+    
     public Ranque(){}
 
     
+    public void criarRanque(String n)
+    {
+        votos.add(n);
+        contVotos.add(0);
+    }
+
     public void contagemVotos(int posicao)
     {
-        contVotos[posicao]++;
-        System.out.println("voto ["+posicao+"] = " + contVotos[posicao]);
+        contVotos.set(posicao,(contVotos.get(posicao)+1));
     }
 
-    public void criarVetor(int n)
-    {
-        id.add(indice);
-        votos = new String[n];
-        contVotos = new int[n];
-        inicioDeVotacao();
-    }
-
-    private void inicioDeVotacao()
-    {
-        for (int i = 0; i < contVotos.length; i++) {
-            contVotos[i] = 0;
-        }
-    }
-    
-    public void addEscolharDeVotos(ArrayList<String> n)
-    {
-        for (int i = 0; i < n.size(); i++) 
-            votos[i] = n.get(i);
-    }
-    
     public String adicionarOpcoesDeEscolha()
     {
         TextInputDialog item = new TextInputDialog();
@@ -84,29 +69,30 @@ public class Ranque {
         else
             return false;
     }
-
-    public String[] getVotos() {
-        return votos;
-    }
-
-    public void setVotos(String[] votos) {
-        Ranque.votos = votos;
-    }
-    public int[] getContVotos() {
-        return contVotos;
-    }
     
-    public void setContVotos(int[] contVotos) {
-        Ranque.contVotos = contVotos;
-    }
-
     public void adicionarNomeDoRanque(String n)
     {
         tituloDoRanque.add(n);
     }
-
+    
     public String retornaNomeDoRanque()
     {
         return tituloDoRanque.get(0);
     }
-}
+
+    public String getVotos(int posicao)
+    {
+        return this.votos.get(posicao);
+    }
+
+    public int tamanhoDoVetor()
+    {
+        return this.contVotos.size();
+    }
+
+    public int getContVotos(int posicao)
+    {
+        return this.contVotos.get(posicao);
+    }
+
+}    
