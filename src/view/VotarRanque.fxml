@@ -43,7 +43,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="598.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VotarController">
+<VBox prefHeight="598.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VotarController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
@@ -51,7 +51,7 @@
               <tabs>
                 <Tab text="Ranque">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #003366;">
                            <children>
                               <TableView fx:id="tbRanqueDeVotos" layoutX="144.0" layoutY="72.0" prefHeight="387.0" prefWidth="487.0">
                                 <columns>
@@ -61,18 +61,21 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <TextField fx:id="tfNomeRanque" editable="false" layoutX="142.0" layoutY="10.0" prefHeight="45.0" prefWidth="488.0" />
+                              <TextField fx:id="tfNomeRanque" alignment="CENTER" editable="false" layoutX="142.0" layoutY="10.0" prefHeight="45.0" prefWidth="488.0">
+                                 <font>
+                                    <Font name="Bauhaus 93" size="27.0" />
+                                 </font></TextField>
                               <Button fx:id="btEnviar" layoutX="350.0" layoutY="487.0" mnemonicParsing="false" text="Enviar" textAlignment="CENTER">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font name="Cooper Black" size="18.0" />
                                  </font>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </Button>
-                              <Button fx:id="btVoltar" layoutX="666.0" layoutY="516.0" mnemonicParsing="false" text="Voltar" textAlignment="CENTER">
+                              <Button fx:id="btVoltar" layoutX="653.0" layoutY="520.0" mnemonicParsing="false" text="Voltar" textAlignment="CENTER">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font name="Cooper Black" size="18.0" />
                                  </font>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
@@ -84,7 +87,7 @@
                 </Tab>
                 <Tab text="Resultado">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #003366;">
                            <children>
                               <TableView fx:id="tbRanqueResultado" layoutX="133.0" layoutY="91.0" prefHeight="387.0" prefWidth="487.0">
                                  <columns>
@@ -95,8 +98,11 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <TextField fx:id="tfNomeRanqueResultado" editable="false" layoutX="132.0" layoutY="25.0" prefHeight="45.0" prefWidth="488.0" />
-                              <Button fx:id="btVoltar1" layoutX="666.0" layoutY="516.0" mnemonicParsing="false" text="Voltar" textAlignment="CENTER">
+                              <TextField fx:id="tfNomeRanqueResultado" editable="false" layoutX="132.0" layoutY="25.0" prefHeight="45.0" prefWidth="488.0">
+                                 <font>
+                                    <Font name="Bauhaus 93" size="27.0" />
+                                 </font></TextField>
+                              <Button fx:id="btVoltar1" layoutX="659.0" layoutY="516.0" mnemonicParsing="false" text="Voltar" textAlignment="CENTER">
                                  <font>
                                     <Font size="18.0" />
                                  </font>

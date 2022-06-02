@@ -41,18 +41,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PerfilController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PerfilController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #003366;" VBox.vgrow="ALWAYS">
          <children>
-            <Label layoutX="98.0" layoutY="14.0" text="Bem vindo">
+            <Label layoutX="98.0" layoutY="14.0" text="Bem vindo" textFill="#ebebeb">
                <font>
-                  <Font size="48.0" />
+                  <Font name="Bauhaus 93" size="48.0" />
                </font>
             </Label>
-            <Button fx:id="btCriarRanque" layoutX="92.0" layoutY="149.0" mnemonicParsing="false" text="Criar&#10;Ranque&#10;" textAlignment="CENTER">
+            <Button fx:id="btCriarRanque" layoutX="98.0" layoutY="149.0" mnemonicParsing="false" text="Criar&#10;Ranque&#10;" textAlignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Bauhaus 93" size="19.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -60,13 +60,13 @@
             </Button>
             <Button fx:id="btVotarRanque" layoutX="225.0" layoutY="149.0" mnemonicParsing="false" text="Votar&#10;Ranque&#10;" textAlignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Bauhaus 93" size="19.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <TabPane layoutX="440.0" prefHeight="400.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutX="440.0" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Amigos">
                   <content>
@@ -82,7 +82,7 @@
             </TabPane>
             <Button fx:id="btLogout" layoutX="117.0" layoutY="338.0" mnemonicParsing="false" text="Encessar Sessão" textAlignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cooper Black" size="18.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />

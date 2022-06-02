@@ -25,6 +25,7 @@ public class Login extends Application {
     
     public static Stage getStage()
     {
+        
         return stage;
     }
 

@@ -41,47 +41,47 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="379.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastrarController">
+<VBox prefHeight="379.0" prefWidth="479.0" style="-fx-background-color: #4A4545;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastrarController">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="323.0" prefWidth="555.0">
          <children>
-            <Label layoutX="110.0" layoutY="14.0" text="Cadastrar">
+            <Label layoutX="110.0" layoutY="14.0" text="Cadastrar" textFill="WHITE">
                <font>
-                  <Font name="Arial" size="48.0" />
+                  <Font name="Bauhaus 93" size="48.0" />
                </font>
             </Label>
-            <Label layoutX="79.0" layoutY="157.0" text="Senha:">
+            <Label layoutX="79.0" layoutY="157.0" text="Senha:" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Bauhaus 93" size="19.0" />
                </font>
             </Label>
             <TextField fx:id="tfNome" layoutX="79.0" layoutY="132.0" prefHeight="25.0" prefWidth="302.0" />
             <PasswordField fx:id="pfSenha" layoutX="79.0" layoutY="183.0" prefHeight="25.0" prefWidth="302.0" />
             <PasswordField fx:id="pfConfirmarSenha" layoutX="80.0" layoutY="236.0" prefHeight="25.0" prefWidth="302.0" />
-            <Button fx:id="btCadastrar" layoutX="165.0" layoutY="279.0" mnemonicParsing="false" onAction="#initialize" text="Cadastrar">
+            <Button fx:id="btCadastrar" layoutX="181.0" layoutY="290.0" mnemonicParsing="false" onAction="#initialize" text="Cadastrar">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cooper Black" size="18.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btVoltar" layoutX="381.0" layoutY="318.0" mnemonicParsing="false" text="Voltar">
+            <Button fx:id="btVoltar" layoutX="381.0" layoutY="310.0" mnemonicParsing="false" text="Voltar">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial" size="18.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="80.0" layoutY="208.0" text="Confirmar Senha:">
+            <Label layoutX="80.0" layoutY="208.0" text="Confirmar Senha:" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Bauhaus 93" size="19.0" />
                </font>
             </Label>
-            <Label layoutX="80.0" layoutY="105.0" text="Nome do usuário:">
+            <Label layoutX="80.0" layoutY="105.0" text="Nome do usuário:" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Bauhaus 93" size="19.0" />
                </font>
             </Label>
          </children>

@@ -45,66 +45,72 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="647.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CriarRanqueamentoController">
+<VBox prefHeight="647.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CriarRanqueamentoController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #003366;" VBox.vgrow="ALWAYS">
          <children>
             <Button fx:id="btVoltar" layoutX="687.0" layoutY="594.0" mnemonicParsing="false" text="Voltar" textAlignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cooper Black" size="16.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="192.0" layoutY="14.0" text="Criar Ranqueamento" textAlignment="CENTER">
+            <Label layoutX="192.0" layoutY="14.0" text="Criar Ranqueamento" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Arial" size="48.0" />
+                  <Font name="Bauhaus 93" size="48.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="93.0" text="Nome do ranque: ">
+            <Label layoutX="14.0" layoutY="93.0" text="Nome do ranque: " textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Bauhaus 93" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="tfNomeDoRanque" layoutX="159.0" layoutY="95.0" prefHeight="25.0" prefWidth="235.0" />
-            <Label layoutX="172.0" layoutY="144.0" text="Itens do ranque">
+            <Label layoutX="172.0" layoutY="144.0" text="Itens do ranque" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Bauhaus 93" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="415.0" layoutY="93.0" text="Tipo do ranque: ">
+            <Label layoutX="415.0" layoutY="93.0" text="Tipo do ranque: " textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Bauhaus 93" size="18.0" />
                </font>
             </Label>
-            <RadioButton fx:id="rbAberto" layoutX="415.0" layoutY="126.0" mnemonicParsing="false" onAction="#tipoRanque" text="Aberto">
+            <RadioButton fx:id="rbAberto" layoutX="410.0" layoutY="136.0" mnemonicParsing="false" onAction="#tipoRanque" text="Aberto" textFill="WHITE">
                <toggleGroup>
                   <ToggleGroup fx:id="meuGrupo" />
-               </toggleGroup></RadioButton>
-            <RadioButton fx:id="rbFechado" layoutX="481.0" layoutY="126.0" mnemonicParsing="false" onAction="#tipoRanque" text="Fechado" toggleGroup="$meuGrupo" />
+               </toggleGroup>
+               <font>
+                  <Font name="Bauhaus 93" size="13.0" />
+               </font></RadioButton>
+            <RadioButton fx:id="rbFechado" layoutX="490.0" layoutY="135.0" mnemonicParsing="false" onAction="#tipoRanque" text="Fechado" textFill="WHITE" toggleGroup="$meuGrupo">
+               <font>
+                  <Font name="Bauhaus 93" size="13.0" />
+               </font></RadioButton>
             <Button fx:id="btCriar" layoutX="379.0" layoutY="575.0" mnemonicParsing="false" text="Criar" textAlignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cooper Black" size="16.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btAdicionarItem" layoutX="19.0" layoutY="285.0" mnemonicParsing="false" text="Adicionar item" textAlignment="CENTER">
+            <Button fx:id="btAdicionarItem" layoutX="6.0" layoutY="282.0" mnemonicParsing="false" text="Adicionar item" textAlignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cooper Black" size="16.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="581.0" layoutY="93.0" text="Data de encerramento:">
+            <Label layoutX="581.0" layoutY="93.0" text="Data de encerramento:" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Bauhaus 93" size="18.0" />
                </font>
             </Label>
-            <TableView fx:id="tabela" layoutX="172.0" layoutY="172.0" prefHeight="387.0" prefWidth="487.0">
+            <TableView fx:id="tabela" layoutX="172.0" layoutY="172.0" prefHeight="387.0" prefWidth="487.0" style="-fx-background-color: #FFFFFF;">
               <columns>
                 <TableColumn fx:id="itens" prefWidth="378.0" text="itens" />
               </columns>
@@ -114,7 +120,7 @@
             </TableView>
             <Button fx:id="btExcluir" layoutX="672.0" layoutY="305.0" mnemonicParsing="false" text="Excluir" textAlignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cooper Black" size="16.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
