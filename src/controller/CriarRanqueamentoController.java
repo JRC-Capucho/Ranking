@@ -147,20 +147,15 @@ public class CriarRanqueamentoController
         int atualAno = Integer.parseInt(sdda.substring(0,4));
         int atualMes = Integer.parseInt(sdda.substring(6,7));
         int atualDia = Integer.parseInt(sdda.substring(9,10));
-    
-        verificarData(calendarioAno,calendarioMes,calendarioDia,atualAno,atualMes,atualDia);
-    }
-
-    private void verificarData(int calendarioAno,int calendarioMes, int calendarioDia, int atualAno, int atualMes, int atualDia)
-    {
+        
         if(atualAno < calendarioAno)
-            System.out.println("Proximo ano");
-        if(atualAno == calendarioAno && atualMes < calendarioMes)
-            System.out.println("Mesmo ano, proximo mes");
-        if(atualAno == calendarioAno && atualMes == calendarioMes && atualDia <= calendarioDia)
-            System.out.println("Mesmo ano, mesmo mes, proximo dia ou mesmo dia");
+        {}
+        else if(atualAno <= calendarioAno && atualMes < calendarioMes)
+        {}
+        else if(atualAno == calendarioAno && atualMes == calendarioMes && atualDia <= calendarioDia)
+        {}
     }
-
+        
     private void adicionarItemNaTabela() 
     {
         Items ite = new Items(ranque.adicionarOpcoesDeEscolha());
@@ -187,8 +182,11 @@ public class CriarRanqueamentoController
 
     private void criarRanque()
     {
-        ranque.criarVetor(escolhas.size());
-        ranque.addEscolharDeVotos(escolhas);
+        for (int i = 0; i < escolhas.size(); i++) 
+        {
+            ranque.criarRanque(escolhas.get(i));
+        }
+        
         ranque.adicionarNomeDoRanque(tfNomeDoRanque.getText());
         msgRanqueCriado();
         voltarPerfil();
@@ -204,6 +202,7 @@ public class CriarRanqueamentoController
         }
         
     }
+
 
     private void msgRanqueCriado()
     {
