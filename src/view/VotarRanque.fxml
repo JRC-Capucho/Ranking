@@ -91,7 +91,8 @@
                            <children>
                               <TableView fx:id="tbRanqueResultado" layoutX="133.0" layoutY="91.0" prefHeight="387.0" prefWidth="487.0">
                                  <columns>
-                                    <TableColumn fx:id="itemColocacaoCol" prefWidth="202.0" text="itens" />
+                                    <TableColumn fx:id="itemMelhorRanqueadoCol" prefWidth="75.0" text="Melhor ranqueado" />
+                                    <TableColumn fx:id="itemColocacaoCol" prefWidth="202.0" text="Quantidade de votos" />
                                  </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
