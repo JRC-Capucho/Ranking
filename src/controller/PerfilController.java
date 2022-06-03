@@ -42,12 +42,12 @@ public class PerfilController implements Initializable{
         btVotarRanque.setDisable(restrigirAcesso);
 
         btVotarRanque.setOnMouseClicked((MouseEvent e)->{
-              chamarVotarRanque();
+              chamarVotarRanque(VotarController.votou);
         });
     
         btVotarRanque.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER)
-                chamarVotarRanque();
+                chamarVotarRanque(VotarController.votou);
         });
 
         btLogout.setOnMouseClicked((MouseEvent e)->{
@@ -72,14 +72,16 @@ public class PerfilController implements Initializable{
         }
     }
 
-    private void chamarVotarRanque()
+    private void chamarVotarRanque(int votou )
     {
+        if (votou == 0){
         VoteRanque voteRanque = new VoteRanque();
         fechar();
         try {
             voteRanque.start(new Stage());
         } catch (Exception e) {
         }
+    }
     }
 
     private void voltarLogin()

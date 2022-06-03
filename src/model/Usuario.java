@@ -79,7 +79,7 @@ public class Usuario {
     {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Erro!");
-        alert.setHeaderText("Erro ao realizar tarefa");
+        alert.setHeaderText("Login invalido!");
         alert.setContentText("Senhas diferentes!");
         alert.show();
     }

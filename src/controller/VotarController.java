@@ -25,6 +25,7 @@ import viewii.VoteRanque;
 public class VotarController implements Initializable{
 
     private Ranque ranque = new Ranque();
+    static int votou = 0;
 
     @FXML
     private Label lbNomeRanque;
@@ -37,6 +38,9 @@ public class VotarController implements Initializable{
 
     @FXML
     private Button btVoltar;
+
+    @FXML
+    private Button btVotarRanque;
 
     @FXML
     private TableColumn<Items, String> itemCol;
@@ -108,9 +112,13 @@ public class VotarController implements Initializable{
     
     private void votarNaEscolha()
     {
+        
         btEnviar.setDisable(true);
         int posicao = tbRanqueDeVotos.getSelectionModel().getSelectedIndex();
         ranque.contagemVotos(posicao);
+        votou = 1;
+
+        
     }
 
     private void nomeDoRanque()
