@@ -14,8 +14,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import model.Items;
 import model.Ranque;
+import viewii.Perfil;
 import viewii.VotarResultado;
 
 
@@ -48,12 +50,12 @@ public class VotarResultadoController implements Initializable{
         ordemVotos();
 
         btVoltar1.setOnMouseClicked((MouseEvent e)->{
-            fechar();
+            chamarPerfil();
         });
 
         btVoltar1.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER)
-                fechar();
+                chamarPerfil();
         });
     }
 
@@ -92,7 +94,17 @@ public class VotarResultadoController implements Initializable{
     {
         lbNomeRanqueResultado.setText(ranque.retornaNomeDoRanque());
     }
-    
+
+    private void chamarPerfil()
+    {
+            Perfil perfil = new Perfil();
+            fechar();
+            try {
+                perfil.start(new Stage());
+            } catch (Exception e) {
+            }
+            
+    }
 
     private void fechar()
     {

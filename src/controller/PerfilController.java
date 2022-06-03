@@ -13,11 +13,15 @@ import javafx.stage.Stage;
 import viewii.CriarRanqueamento;
 import viewii.Login;
 import viewii.Perfil;
+import viewii.VotarResultado;
 import viewii.VoteRanque;
 
 public class PerfilController implements Initializable{
 
     private static Boolean restrigirAcesso = true;
+
+    @FXML
+    private Button btResultadoRanqueado;
 
     @FXML
     private Button btCriarRanque;
@@ -30,6 +34,12 @@ public class PerfilController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        btResultadoRanqueado.setOnMouseClicked((MouseEvent e)->{
+            chamarResultado();
+        });
+
+        
         btCriarRanque.setOnMouseClicked((MouseEvent e)->{
             chamarCriarRanqueamento();
         });
@@ -71,6 +81,18 @@ public class PerfilController implements Initializable{
         } catch (Exception e) {
         }
     }
+
+    private void chamarResultado()
+    {
+        VotarResultado resultado = new VotarResultado();
+        fechar();
+        try {
+            resultado.start(new Stage());
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+    }
+
 
     private void chamarVotarRanque(int votou )
     {

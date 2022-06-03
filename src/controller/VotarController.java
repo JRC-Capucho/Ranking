@@ -31,9 +31,6 @@ public class VotarController implements Initializable{
     private Label lbNomeRanque;
 
     @FXML
-    private Button btResultado;
-
-    @FXML
     private Button btEnviar;
 
     @FXML
@@ -67,15 +64,6 @@ public class VotarController implements Initializable{
             if(e.getCode() == KeyCode.ENTER)
                 votarNaEscolha();
         });
-        
-        btResultado.setOnMouseClicked((MouseEvent e)->{
-            chamarResultado();
-        });
-
-        btResultado.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER)
-                chamarResultado();
-        });
 
         btVoltar.setOnMouseClicked((MouseEvent e)->{
             voltarPerfil();
@@ -92,8 +80,7 @@ public class VotarController implements Initializable{
     {
         System.out.println(ranque.tamanhoDoVetor());
         String[] aux = new String[ranque.tamanhoDoVetor()];
-
-        for (int i = 0; i < ranque.tamanhoDoVetor(); i++) 
+        for (int i = 0; i < aux.length; i++) 
             aux[i] = ranque.getVotos(i);
         
         for (String n : aux) {

@@ -41,7 +41,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="598.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VotarController">
+<VBox prefHeight="598.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VotarController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #003366;" VBox.vgrow="ALWAYS">
          <children>
@@ -53,7 +53,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Button fx:id="btEnviar" layoutX="238.0" layoutY="520.0" mnemonicParsing="false" text="Enviar" textAlignment="CENTER">
+            <Button fx:id="btEnviar" layoutX="325.0" layoutY="519.0" mnemonicParsing="false" text="Enviar" textAlignment="CENTER">
                <font>
                   <Font name="Cooper Black" size="18.0" />
                </font>
@@ -74,14 +74,6 @@
                   <Font name="Bauhaus 93" size="48.0" />
                </font>
             </Label>
-            <Button fx:id="btResultado" layoutX="376.0" layoutY="520.0" mnemonicParsing="false" text="Resultado" textAlignment="CENTER">
-               <font>
-                  <Font name="Cooper Black" size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
          </children>
     </AnchorPane>
   </children>
