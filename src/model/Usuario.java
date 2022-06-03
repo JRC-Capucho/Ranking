@@ -1,8 +1,14 @@
 package model;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
+import viewii.Cadastrar;
+import viewii.Login;
+
 import java.util.ArrayList;
+import java.util.Optional;
 public class Usuario {
 
     private static ArrayList<Integer>id = new ArrayList<>();
@@ -65,6 +71,22 @@ public class Usuario {
         senha.add(pass);       
         msgSucesso();
     }
+    
+    private void chamarLogin()
+    {
+        Login login = new Login();
+        try {
+            login.start(new Stage());
+        } catch (Exception e) {
+            
+        }
+        finally
+        {
+            Cadastrar.getStage().close();
+        }
+
+    }
+
 
     private void msgSucesso()
     {
@@ -72,7 +94,16 @@ public class Usuario {
         alert.setTitle("Sucesso");
         alert.setHeaderText("Realizado com sucesso!");
         alert.setContentText("Conta criada com sucesso!");
-        alert.show();
+        
+        ButtonType botaoOk = new ButtonType("OK");
+        ButtonType botaoCancel = new ButtonType("Cancelar");
+
+        alert.getButtonTypes().setAll(botaoOk, botaoCancel);
+
+        Optional<ButtonType> aux = alert.showAndWait();
+        
+        if(aux.get() == botaoOk)
+            chamarLogin();
     }
     
     private void msgErroSenhas()
