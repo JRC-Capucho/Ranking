@@ -14,11 +14,12 @@ public class Usuario {
     private static ArrayList<Integer>id = new ArrayList<>();
     private static int posicao = -1;
     private static ArrayList<String>apelido = new ArrayList<>();
+    
     private static ArrayList<String>senha = new ArrayList<>();
 
     public Usuario(){
     }
-  
+    
     public boolean validarLogin(String username, String pass)
     {
         for (int i = 0; i < id.size(); i++)
@@ -29,7 +30,7 @@ public class Usuario {
         msgLoginErro();
         return false;
     }
-
+    
     
     public void verificarDados(String pass, String confPass, String username)
     {
@@ -99,12 +100,12 @@ public class Usuario {
         ButtonType botaoCancel = new ButtonType("Cancelar");
 
         alert.getButtonTypes().setAll(botaoOk, botaoCancel);
-
+        
         Optional<ButtonType> aux = alert.showAndWait();
         
         if(aux.get() == botaoOk)
             chamarLogin();
-    }
+        }
     
     private void msgErroSenhas()
     {
@@ -132,7 +133,7 @@ public class Usuario {
         alert.setContentText("Esse nome de usuário já esta cadastrado");
         alert.show();
     }
-
+    
     private void msgErroVazio()
     {
         Alert alert = new Alert(AlertType.WARNING);
@@ -141,5 +142,12 @@ public class Usuario {
         alert.setContentText("Por favor preencher os campos");
         alert.show();
     }
-
+    
+    public ArrayList<String> getApelido() {
+        return apelido;
+    }
+    
+    public void setApelido(ArrayList<String> apelido) {
+        this.apelido = apelido;
+    }
 }

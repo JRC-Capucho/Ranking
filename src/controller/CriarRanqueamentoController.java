@@ -71,6 +71,7 @@ public class CriarRanqueamentoController
     private RadioButton rbFechado; 
 
 
+
     public void initialize()
     {
 
@@ -112,6 +113,7 @@ public class CriarRanqueamentoController
             if(e.getCode() == KeyCode.ENTER)
                 criarRanque(); 
         });
+
 
     }    
 
