@@ -29,7 +29,8 @@ public class PerfilController implements Initializable{
     private static Boolean restrigirAcesso = true;
     private Usuario user = new Usuario();
     private Button botao = new Button("Enviar");
-
+    
+    // comentario para subir no git
     @FXML
     private Button btResultadoRanqueado;
 
