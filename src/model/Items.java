@@ -1,6 +1,7 @@
 package model;
 
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 
 public class Items {
 
@@ -34,7 +35,6 @@ public class Items {
         return posicaoItem;
     }
     
-    
     public void setPosicaoItem(Integer posicaoItem) {
         this.posicaoItem = posicaoItem;
     }
@@ -54,5 +54,12 @@ public class Items {
     
     public void setBotao(Button botao) {
         this.botao = botao;
+    }
+
+    public void button()
+    {
+        botao.setOnMouseClicked((MouseEvent e)->{
+            System.out.println("Hello");
+        });
     }
 }

@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -13,12 +14,16 @@ public class Ranque {
 
 
     private static ArrayList<String> tituloDoRanque = new ArrayList<>();
-    private static ArrayList<Integer> id = new ArrayList();
+    private static ArrayList<Integer> id = new ArrayList<>();
     private static ArrayList<Integer> contVotos = new ArrayList<>();
     private static ArrayList<String> votos = new ArrayList<>();
-    
-    
-    
+    private static ArrayList<LocalDate> dataDeTermino = new ArrayList<>();
+    private static ArrayList<LocalDate> dataDeInicio = new ArrayList<>();
+    private static int posicao = 0;
+    private static Boolean tipoRanque;
+
+
+
     public Ranque(){}
 
     
@@ -95,4 +100,35 @@ public class Ranque {
         return this.contVotos.get(posicao);
     }
 
+    public LocalDate getDataDeTermino(int posicao) {
+        return dataDeTermino.get(posicao);
+    }
+
+    public void setDataDeTermino(LocalDate dataDeTermino) {
+        this.dataDeTermino.add(dataDeTermino);
+    }
+
+    public LocalDate getDataDeInicio(int posicao) {
+        return dataDeInicio.get(posicao);
+    }
+
+    public void setDataDeInicio(LocalDate dataDeInicio) {
+        this.dataDeInicio.add(dataDeInicio);
+    }
+
+    public int getId(int posicao) {
+        return id.get(posicao);
+    }
+
+    public void setId() {
+        this.id.add(this.posicao++);
+    }
+
+    public Boolean getTipoRanque() {
+        return tipoRanque;
+    }
+
+    public void setTipoRanque(Boolean tipoRanque) {
+        this.tipoRanque = tipoRanque;
+    }
 }    

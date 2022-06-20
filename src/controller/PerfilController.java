@@ -27,10 +27,12 @@ import viewii.VoteRanque;
 public class PerfilController implements Initializable{
 
     private static Boolean restrigirAcesso = true;
+
+    private static Boolean existeRanque = true;
+    private static Button botao;
+
     private Usuario user = new Usuario();
-    private Button botao = new Button("Enviar");
-    
-    // comentario para subir no git
+
     @FXML
     private Button btResultadoRanqueado;
 
@@ -61,6 +63,8 @@ public class PerfilController implements Initializable{
         tcUsuario.setCellValueFactory(new PropertyValueFactory<Items, String>("item"));
         tcBotao.setCellValueFactory(new PropertyValueFactory<Items, Button>("botao"));
 
+        btResultadoRanqueado.setDisable(existeRanque);
+
         btResultadoRanqueado.setOnMouseClicked((MouseEvent e)->{
             chamarResultado();
         });
@@ -78,12 +82,12 @@ public class PerfilController implements Initializable{
         btVotarRanque.setDisable(restrigirAcesso);
 
         btVotarRanque.setOnMouseClicked((MouseEvent e)->{
-              chamarVotarRanque(VotarController.votou);
+              chamarVotarRanque();
         });
     
         btVotarRanque.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER)
-                chamarVotarRanque(VotarController.votou);
+                chamarVotarRanque();
         });
 
         btLogout.setOnMouseClicked((MouseEvent e)->{
@@ -101,15 +105,10 @@ public class PerfilController implements Initializable{
                 buscarAmigos();
         });
 
-        botao.setOnMouseClicked((MouseEvent e)->{
-            System.out.println("echo");
-        });
     }
 
     private void chamarCriarRanqueamento()
     {
-        restrigirAcesso = false;
-
         CriarRanqueamento criarRanqueamento = new CriarRanqueamento();
         fechar();
         try {
@@ -123,6 +122,7 @@ public class PerfilController implements Initializable{
         int i = 0;
         String amigo;
         ArrayList<String> aux = user.getApelido();
+
         while(aux != null)
         {
             amigo = aux.get(i);
@@ -151,9 +151,8 @@ public class PerfilController implements Initializable{
     }
 
 
-    private void chamarVotarRanque(int votou )
+    private void chamarVotarRanque()
     {
-        if (votou == 0){
         VoteRanque voteRanque = new VoteRanque();
         fechar();
         try {
@@ -161,7 +160,7 @@ public class PerfilController implements Initializable{
         } catch (Exception e) {
         }
     }
-    }
+    
 
     private void voltarLogin()
     {
@@ -178,4 +177,11 @@ public class PerfilController implements Initializable{
         Perfil.getStage().close();
     }
 
+    public void setExisteRanque(Boolean existeRanque) {
+        this.existeRanque = existeRanque;
+    }
+
+    public void setRestrigirAcesso(Boolean restrigirAcesso) {
+        this.restrigirAcesso = restrigirAcesso;
+    }
 }

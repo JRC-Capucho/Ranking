@@ -32,10 +32,13 @@ import model.Items;
 public class CriarRanqueamentoController
 {
     Ranque ranque = new Ranque();
+    PerfilController perfilController = new PerfilController();
 
     private ArrayList<String> escolhas = new ArrayList<>();
     private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private LocalDateTime dataDiaAtual;
+    private LocalDateTime minimoDia;
+    private LocalDate dataDeInicio, dataDeTermino;
+    private Boolean tipoRanque;
 
     @FXML
     private Button btAdicionarItem;
@@ -77,6 +80,7 @@ public class CriarRanqueamentoController
 
         itens.setCellValueFactory(new PropertyValueFactory<Items, String>("item"));
         tabela.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        dpEncerramentoRanque.setValue(LocalDate.now());
 
         btVoltar.setOnMouseClicked((MouseEvent e)->{
             voltarPerfil();
@@ -121,19 +125,19 @@ public class CriarRanqueamentoController
     void tipoRanque(ActionEvent event)
     {
         if(rbAberto.isSelected())
-            System.out.println("Aberto");
+            tipoRanque = true;
         if(rbFechado.isSelected())
-            System.out.println("Fechado");
+            tipoRanque = false;
     }
  
     @FXML
     void getData(ActionEvent event) throws ParseException
     {
         LocalDate dataCalendario = dpEncerramentoRanque.getValue();
-        dataDiaAtual = LocalDateTime.now();
+        minimoDia = LocalDateTime.now();
 
         String sdc = dataCalendario.toString();
-        String sdda = dtf.format(dataDiaAtual).toString();
+        String sdda = dtf.format(minimoDia).toString();
 
         converterDiaStringParaInt(sdc,sdda);
                
@@ -150,12 +154,13 @@ public class CriarRanqueamentoController
         int atualMes = Integer.parseInt(sdda.substring(6,7));
         int atualDia = Integer.parseInt(sdda.substring(9,10));
         
-        if(atualAno < calendarioAno)
-        {}
-        else if(atualAno <= calendarioAno && atualMes < calendarioMes)
-        {}
-        else if(atualAno == calendarioAno && atualMes == calendarioMes && atualDia <= calendarioDia)
-        {}
+        if(atualAno == calendarioAno && atualMes <= calendarioMes && atualDia <= calendarioDia)
+        {
+            System.out.println(dpEncerramentoRanque.getValue());
+            System.out.println(dpEncerramentoRanque.getValue().plusDays(7));
+            dataDeInicio = dpEncerramentoRanque.getValue();
+            dataDeTermino = dpEncerramentoRanque.getValue().plusDays(7);
+        }
     }
         
     private void adicionarItemNaTabela() 
@@ -190,6 +195,10 @@ public class CriarRanqueamentoController
         }
         
         ranque.adicionarNomeDoRanque(tfNomeDoRanque.getText());
+        ranque.setDataDeInicio(dataDeInicio);
+        ranque.setDataDeTermino(dataDeTermino);
+        ranque.setTipoRanque(tipoRanque);
+        perfilController.setRestrigirAcesso(false);
         msgRanqueCriado();
         voltarPerfil();
     }

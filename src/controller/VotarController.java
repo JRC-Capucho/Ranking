@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
@@ -19,13 +20,13 @@ import javafx.stage.Stage;
 import model.Items;
 import model.Ranque;
 import viewii.Perfil;
-import viewii.VotarResultado;
 import viewii.VoteRanque;
 
 public class VotarController implements Initializable{
 
     private Ranque ranque = new Ranque();
-    static int votou = 0;
+    private PerfilController perfilController = new PerfilController();
+    private static Boolean jaVotou = false;
 
     @FXML
     private Label lbNomeRanque;
@@ -56,6 +57,8 @@ public class VotarController implements Initializable{
         tabelaVotos();
         nomeDoRanque();
 
+        btEnviar.setDisable(jaVotou);
+
         btEnviar.setOnMouseClicked((MouseEvent e)->{
             votarNaEscolha();
         });
@@ -78,14 +81,10 @@ public class VotarController implements Initializable{
 
     private void tabelaVotos()
     {
-        System.out.println(ranque.tamanhoDoVetor());
         String[] aux = new String[ranque.tamanhoDoVetor()];
         for (int i = 0; i < aux.length; i++) 
             aux[i] = ranque.getVotos(i);
         
-        for (String n : aux) {
-            System.out.println(n);
-        }
 
         for (int i = 0; i < ranque.tamanhoDoVetor(); i++) {
 
@@ -99,13 +98,15 @@ public class VotarController implements Initializable{
     
     private void votarNaEscolha()
     {
-        
         btEnviar.setDisable(true);
         int posicao = tbRanqueDeVotos.getSelectionModel().getSelectedIndex();
         ranque.contagemVotos(posicao);
-        votou = 1;
+        perfilController.setRestrigirAcesso(true);
 
-        
+        if (ranque.getDataDeInicio(0).equals(LocalDate.now()) && ranque.getTipoRanque()) {
+            System.out.println("entrou no if");
+            perfilController.setExisteRanque(false);
+        }
     }
 
     private void nomeDoRanque()
@@ -113,15 +114,6 @@ public class VotarController implements Initializable{
         lbNomeRanque.setText(ranque.retornaNomeDoRanque());
     }
     
-    private void chamarResultado()
-    {
-        VotarResultado resultado = new VotarResultado();
-        try {
-            resultado.start(new Stage());
-        } catch (Exception e) {
-            //TODO: handle exception
-        }
-    }
 
     private void voltarPerfil()
     {
