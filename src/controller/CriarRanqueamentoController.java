@@ -26,11 +26,14 @@ import javafx.stage.Stage;
 import viewii.CriarRanqueamento;
 import viewii.Perfil;
 import model.Ranque;
+import model.Usuario;
 import model.Items;
 
 public class CriarRanqueamentoController {
-    Ranque ranque = new Ranque();
-    PerfilController perfilController = new PerfilController();
+    private Ranque ranque = new Ranque();
+    private PerfilController perfilController = new PerfilController();
+    private Usuario user = new Usuario();
+    private int id = user.getIdUser();
 
     private ArrayList<String> escolhas = new ArrayList<>();
     private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -176,14 +179,12 @@ public class CriarRanqueamentoController {
     }
 
     private void criarRanque() {
-        for (int i = 0; i < escolhas.size(); i++) {
-            ranque.criarRanque(escolhas.get(i));
-        }
+            ranque.criarRanque(id, escolhas);
 
-        ranque.adicionarNomeDoRanque(tfNomeDoRanque.getText());
-        ranque.setDataDeInicio(dataDeInicio);
-        ranque.setDataDeTermino(dataDeTermino);
-        ranque.setTipoRanque(tipoRanque);
+        ranque.adicionarNomeDoRanque(id, tfNomeDoRanque.getText());
+        ranque.setDataDeInicio(id, dataDeInicio);
+        ranque.setDataDeTermino(id, dataDeTermino);
+        ranque.setTipoRanque(id, tipoRanque);
         perfilController.setRestrigirAcesso(false);
         msgRanqueCriado();
         voltarPerfil();

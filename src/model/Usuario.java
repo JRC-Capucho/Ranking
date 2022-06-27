@@ -12,8 +12,11 @@ import java.util.Optional;
 
 public class Usuario {
 
+    private Ranque ranque = new Ranque();
+
     private static ArrayList<Integer> id = new ArrayList<>();
-    private static int posicao = 0;
+    private static int autoEncrement = 0;
+    private static int idUser;
     private static ArrayList<String> apelido = new ArrayList<>();
     private static ArrayList<String> senha = new ArrayList<>();
 
@@ -23,6 +26,7 @@ public class Usuario {
     public boolean validarLogin(String username, String pass) {
         for (int i = 0; i < id.size(); i++) {
             if (apelido.get(i).equals(username) && senha.get(i).equals(pass))
+                idUser = i;
                 return true;
         }
         msgLoginErro();
@@ -53,10 +57,11 @@ public class Usuario {
     }
 
     public void cadastrar(String pass, String username) {
-        id.add(posicao);
-        posicao++;
+        id.add(autoEncrement);
+        autoEncrement++;
         apelido.add(username);
         senha.add(pass);
+        ranque.ranqueUser();
         msgSucesso();
     }
 
@@ -142,4 +147,11 @@ public class Usuario {
         return apelido;
     }
 
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public  void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
 }

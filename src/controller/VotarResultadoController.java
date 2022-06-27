@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Items;
 import model.Ranque;
+import model.Usuario;
 import viewii.Perfil;
 import viewii.VotarResultado;
 
@@ -24,7 +25,8 @@ import viewii.VotarResultado;
 public class VotarResultadoController implements Initializable{
 
     private Ranque ranque = new Ranque();
-
+    private Usuario user = new Usuario();
+    private int id = user.getIdUser();
 
     @FXML
     private Button btVoltar1;
@@ -46,7 +48,7 @@ public class VotarResultadoController implements Initializable{
         itemColocacaoCol.setCellValueFactory(new PropertyValueFactory<Items, Integer>("posicaoItem"));
         itemMelhorRanqueadoCol.setCellValueFactory(new PropertyValueFactory<Items, String>("item"));
 
-        nomeDoRanque();
+        nomeDoRanque(id);
         ordemVotos();
 
         btVoltar1.setOnMouseClicked((MouseEvent e)->{
@@ -61,12 +63,12 @@ public class VotarResultadoController implements Initializable{
 
     private void ordemVotos()
     {
-        int[] aux = new int[ranque.tamanhoDoVetor()];
-        int[] ranqueamento = new int[ranque.tamanhoDoVetor()];
+        int[] aux = new int[ranque.tamanhoDoVetor(id)];
+        int[] ranqueamento = new int[ranque.tamanhoDoVetor(id)];
         int maiorPosicao = 0;
 
         for (int i = 0; i < aux.length; i++) 
-            aux[i] = ranque.getContVotos(i);
+            aux[i] = ranque.getContVotos(id,i);
         
 
         for (int i = 0; i < ranqueamento.length; i++) {
@@ -82,7 +84,7 @@ public class VotarResultadoController implements Initializable{
         
         for (int i = 0; i < ranqueamento.length; i++) {
 
-            Items ite = new Items(ranque.getVotos(ranqueamento[i]),ranque.getContVotos(ranqueamento[i]));
+            Items ite = new Items(ranque.getVotos(id,ranqueamento[i]),ranque.getContVotos(id,ranqueamento[i]));
             ObservableList<Items> lista = tbRanqueResultado.getItems();
 
             lista.add(ite);
@@ -90,9 +92,9 @@ public class VotarResultadoController implements Initializable{
         }
     }
 
-    private void nomeDoRanque()
+    private void nomeDoRanque(int posicao)
     {
-        lbNomeRanqueResultado.setText(ranque.retornaNomeDoRanque());
+        lbNomeRanqueResultado.setText(ranque.retornaNomeDoRanque(id,posicao));
     }
 
     private void chamarPerfil()
@@ -110,4 +112,5 @@ public class VotarResultadoController implements Initializable{
     {
         VotarResultado.getStage().close();
     }
+
 }

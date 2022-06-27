@@ -19,14 +19,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Items;
 import model.Ranque;
+import model.Usuario;
 import viewii.Perfil;
 import viewii.VoteRanque;
 
 public class VotarController implements Initializable {
 
     private Ranque ranque = new Ranque();
+    private Usuario user = new Usuario();
     private PerfilController perfilController = new PerfilController();
     private static Boolean jaVotou = false;
+    private int id = user.getIdUser();
 
     @FXML
     private Label lbNomeRanque;
@@ -79,11 +82,11 @@ public class VotarController implements Initializable {
     }
 
     private void tabelaVotos() {
-        String[] aux = new String[ranque.tamanhoDoVetor()];
+        String[] aux = new String[ranque.tamanhoDoVetor(id)];
         for (int i = 0; i < aux.length; i++)
-            aux[i] = ranque.getVotos(i);
+            aux[i] = ranque.getVotos(id, i);
 
-        for (int i = 0; i < ranque.tamanhoDoVetor(); i++) {
+        for (int i = 0; i < ranque.tamanhoDoVetor(id); i++) {
 
             Items ite = new Items(aux[i]);
             ObservableList<Items> lista = tbRanqueDeVotos.getItems();
@@ -96,17 +99,17 @@ public class VotarController implements Initializable {
     private void votarNaEscolha() {
         btEnviar.setDisable(true);
         int posicao = tbRanqueDeVotos.getSelectionModel().getSelectedIndex();
-        ranque.contagemVotos(posicao);
+        ranque.contagemVotos(id,posicao);
         perfilController.setRestrigirAcesso(true);
 
-        if (ranque.getDataDeInicio(0).equals(LocalDate.now()) && ranque.getTipoRanque()) {
+        if (ranque.getDataDeInicio(id, 0).equals(LocalDate.now()) && ranque.getTipoRanque(id, 0)) {
             System.out.println("entrou no if");
             perfilController.setExisteRanque(false);
         }
     }
 
     private void nomeDoRanque() {
-        lbNomeRanque.setText(ranque.retornaNomeDoRanque());
+        lbNomeRanque.setText(ranque.retornaNomeDoRanque(id,0));
     }
 
     private void voltarPerfil() {
