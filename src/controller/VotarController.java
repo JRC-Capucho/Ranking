@@ -22,7 +22,7 @@ import model.Ranque;
 import viewii.Perfil;
 import viewii.VoteRanque;
 
-public class VotarController implements Initializable{
+public class VotarController implements Initializable {
 
     private Ranque ranque = new Ranque();
     private PerfilController perfilController = new PerfilController();
@@ -52,52 +52,48 @@ public class VotarController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         itemCol.setCellValueFactory(new PropertyValueFactory<Items, String>("item"));
-        
 
         tabelaVotos();
         nomeDoRanque();
 
         btEnviar.setDisable(jaVotou);
 
-        btEnviar.setOnMouseClicked((MouseEvent e)->{
+        btEnviar.setOnMouseClicked((MouseEvent e) -> {
             votarNaEscolha();
         });
 
-        btEnviar.setOnKeyPressed((KeyEvent e) ->{
-            if(e.getCode() == KeyCode.ENTER)
+        btEnviar.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER)
                 votarNaEscolha();
         });
 
-        btVoltar.setOnMouseClicked((MouseEvent e)->{
+        btVoltar.setOnMouseClicked((MouseEvent e) -> {
             voltarPerfil();
         });
 
-        btVoltar.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER)
+        btVoltar.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER)
                 voltarPerfil();
         });
-        
+
     }
 
-    private void tabelaVotos()
-    {
+    private void tabelaVotos() {
         String[] aux = new String[ranque.tamanhoDoVetor()];
-        for (int i = 0; i < aux.length; i++) 
+        for (int i = 0; i < aux.length; i++)
             aux[i] = ranque.getVotos(i);
-        
 
         for (int i = 0; i < ranque.tamanhoDoVetor(); i++) {
 
             Items ite = new Items(aux[i]);
             ObservableList<Items> lista = tbRanqueDeVotos.getItems();
-            
+
             lista.add(ite);
             tbRanqueDeVotos.setItems(lista);
-        } 
+        }
     }
-    
-    private void votarNaEscolha()
-    {
+
+    private void votarNaEscolha() {
         btEnviar.setDisable(true);
         int posicao = tbRanqueDeVotos.getSelectionModel().getSelectedIndex();
         ranque.contagemVotos(posicao);
@@ -109,25 +105,21 @@ public class VotarController implements Initializable{
         }
     }
 
-    private void nomeDoRanque()
-    {
+    private void nomeDoRanque() {
         lbNomeRanque.setText(ranque.retornaNomeDoRanque());
     }
-    
 
-    private void voltarPerfil()
-    {
+    private void voltarPerfil() {
         Perfil perfil = new Perfil();
         fechar();
         try {
             perfil.start(new Stage());
         } catch (Exception e) {
-            //TODO: handle exception
+            // TODO: handle exception
         }
     }
 
-    private void fechar()
-    {
+    private void fechar() {
         VoteRanque.getStage().close();
     }
 

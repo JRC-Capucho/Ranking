@@ -45,10 +45,10 @@
 <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PerfilController">
-  <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #003366;" VBox.vgrow="ALWAYS">
+   <children>
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #003366;" VBox.vgrow="ALWAYS">
          <children>
-            <Label layoutX="98.0" layoutY="14.0" text="Bem vindo" textFill="#ebebeb">
+            <Label fx:id="lbIniciar" layoutX="98.0" layoutY="14.0" text="Bem vindo" textFill="#ebebeb">
                <font>
                   <Font name="Bauhaus 93" size="48.0" />
                </font>
@@ -69,27 +69,37 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <TabPane layoutX="440.0" prefHeight="370.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" tabClosingPolicy="UNAVAILABLE">
-              <tabs>
-                <Tab text="Amigos">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="345.0" prefWidth="200.0" />
-                  </content>
-                </Tab>
-                <Tab text="Convites">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <TabPane layoutX="440.0" prefHeight="370.0" prefWidth="200.0" style="-fx-background-color: #1d1d1d;" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab text="Amigos">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="345.0" prefWidth="200.0" style="-fx-background-color: #003366;">
+                           <children>
+                              <TableView fx:id="tbAmigosUsuario" prefHeight="341.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <columns>
+                                    <TableColumn prefWidth="75.0" text="Usuario" />
+                                    <TableColumn prefWidth="75.0" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Convites">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <TableView fx:id="tbBuscarUsuario" layoutX="-24.0" layoutY="14.0" prefHeight="341.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <columns>
-                                  <TableColumn fx:id="tcUsuario" prefWidth="75.0" text="Usuario" />
-                                  <TableColumn fx:id="tcBotao" prefWidth="75.0" />
-                                </columns>
+                                 <columns>
+                                    <TableColumn fx:id="tcUsuario" prefWidth="75.0" text="Usuario" />
+                                    <TableColumn fx:id="tcBotao" prefWidth="75.0" />
+                                 </columns>
                               </TableView>
-                           </children></AnchorPane>
-                  </content>
-                </Tab>
-              </tabs>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
             </TabPane>
             <Button fx:id="btLogout" layoutX="117.0" layoutY="338.0" mnemonicParsing="false" text="Encessar Sessão" textAlignment="CENTER">
                <font>
@@ -110,8 +120,9 @@
             <TextField fx:id="tfBuscar" layoutX="440.0" layoutY="372.0" prefHeight="26.0" prefWidth="200.0" promptText="Buscar">
                <font>
                   <Font name="Bauhaus 93" size="12.0" />
-               </font></TextField>
+               </font>
+            </TextField>
          </children>
-    </AnchorPane>
-  </children>
+      </AnchorPane>
+   </children>
 </VBox>

@@ -1,5 +1,0 @@
-0;jose;jose@gmail.com;jose;
-
-
-0;joao;joao@gmail.com;joao;
-0;lucas;lucas@gmail.com;123;

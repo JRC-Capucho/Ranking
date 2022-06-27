@@ -52,6 +52,9 @@ public class PerfilController implements Initializable{
     private TableView<Items> tbBuscarUsuario;
 
     @FXML
+    private TableView<Items> tbAmigosUsuario;
+
+    @FXML
     private TableColumn<Items, Button> tcBotao;
 
     @FXML

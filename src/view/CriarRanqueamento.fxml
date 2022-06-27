@@ -57,23 +57,23 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="192.0" layoutY="14.0" text="Criar Ranqueamento" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lbIniciar" layoutX="192.0" layoutY="14.0" text="Criar Ranqueamento" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="48.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="93.0" text="Nome do ranque: " textFill="WHITE">
+            <Label fx:id="lbCriarRanque" layoutX="14.0" layoutY="93.0" text="Nome do ranque: " textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="tfNomeDoRanque" layoutX="159.0" layoutY="95.0" prefHeight="25.0" prefWidth="235.0" />
-            <Label layoutX="172.0" layoutY="144.0" text="Itens do ranque" textFill="WHITE">
+            <Label fx:id="lbCriarRanque" layoutX="172.0" layoutY="144.0" text="Itens do ranque" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="415.0" layoutY="93.0" text="Tipo do ranque: " textFill="WHITE">
+            <Label fx:id="lbCriarRanque" layoutX="415.0" layoutY="93.0" text="Tipo do ranque: " textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="18.0" />
                </font>
@@ -105,7 +105,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="581.0" layoutY="93.0" text="Data de encerramento:" textFill="WHITE">
+            <Label fx:id="lbCriarRanque" layoutX="581.0" layoutY="93.0" text="Data de encerramento:" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="18.0" />
                </font>

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -30,6 +31,12 @@ public class LoginController {
 
     @FXML
     private TextField tfUserName;
+
+    @FXML
+    private ImageView imgSenha;
+
+    @FXML
+    private ImageView imgUsuario;
 
     public void initialize()
     {

@@ -2,7 +2,7 @@
 
 <p>Sera um sistema simples onde o usuário podera criar sua conta, assim tendo acesso a <i>"tier list"<i> onde faremos o ranking do mais votado para o menos votado.
 
-Um projeto para a disciplina de Estrutura de Dados
+Um projeto para a disciplina de Estrutura a de Dados
 </p>
 Condição:
 Sem banco de dados.<br>

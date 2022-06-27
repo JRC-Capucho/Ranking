@@ -37,6 +37,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -45,19 +47,9 @@
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="323.0" prefWidth="555.0">
          <children>
-            <Label layoutX="110.0" layoutY="14.0" text="Cadastrar" textFill="WHITE">
-               <font>
-                  <Font name="Bauhaus 93" size="48.0" />
-               </font>
-            </Label>
-            <Label layoutX="79.0" layoutY="157.0" text="Senha:" textFill="WHITE">
-               <font>
-                  <Font name="Bauhaus 93" size="19.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tfNome" layoutX="79.0" layoutY="132.0" prefHeight="25.0" prefWidth="302.0" />
-            <PasswordField fx:id="pfSenha" layoutX="79.0" layoutY="183.0" prefHeight="25.0" prefWidth="302.0" />
-            <PasswordField fx:id="pfConfirmarSenha" layoutX="80.0" layoutY="236.0" prefHeight="25.0" prefWidth="302.0" />
+            <TextField fx:id="tfNome" layoutX="98.0" layoutY="132.0" prefHeight="25.0" prefWidth="302.0" />
+            <PasswordField fx:id="pfSenha" layoutX="98.0" layoutY="183.0" prefHeight="25.0" prefWidth="302.0" />
+            <PasswordField fx:id="pfConfirmarSenha" layoutX="99.0" layoutY="236.0" prefHeight="25.0" prefWidth="302.0" />
             <Button fx:id="btCadastrar" layoutX="181.0" layoutY="290.0" mnemonicParsing="false" onAction="#initialize" text="Cadastrar">
                <font>
                   <Font name="Cooper Black" size="18.0" />
@@ -66,7 +58,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btVoltar" layoutX="381.0" layoutY="310.0" mnemonicParsing="false" text="Voltar">
+            <Button fx:id="btVoltar" layoutX="370.0" layoutY="310.0" mnemonicParsing="false" text="Voltar">
                <font>
                   <Font name="Cooper Black" size="18.0" />
                </font>
@@ -74,16 +66,22 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="80.0" layoutY="208.0" text="Confirmar Senha:" textFill="WHITE">
-               <font>
-                  <Font name="Bauhaus 93" size="19.0" />
-               </font>
-            </Label>
-            <Label layoutX="80.0" layoutY="105.0" text="Nome do usuário:" textFill="WHITE">
-               <font>
-                  <Font name="Bauhaus 93" size="19.0" />
-               </font>
-            </Label>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="45.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/account-box.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="45.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/key.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="45.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/key.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lbIniciar" layoutX="163.0" layoutY="61.0" text="Cadastrar" />
          </children>
       </AnchorPane>
    </children>
