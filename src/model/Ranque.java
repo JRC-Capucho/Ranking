@@ -11,12 +11,15 @@ import javafx.scene.control.Alert.AlertType;
 
 public class Ranque {
 
-
+    private static int contagem = 0;
+    private static ArrayList<ArrayList<Integer>> blockIdRank = new ArrayList<>();
+    private static ArrayList<Integer> idRank;
     private static ArrayList<ArrayList<String>> tittleRank = new ArrayList<>();
     private static ArrayList<String> tituloDoRanque;
     private static ArrayList<ArrayList<Integer>> countVote = new ArrayList<>();
     private static ArrayList<Integer> contVotos;
-    private static ArrayList<ArrayList<String>> vote = new ArrayList<>();
+    private static ArrayList<ArrayList<ArrayList<String>>> blockVote = new ArrayList<>();
+    private static ArrayList<ArrayList<String>> vote;
     private static ArrayList<String> votos;
     private static ArrayList<ArrayList<Boolean>> typeRank = new ArrayList<>();
     private static ArrayList<Boolean> tipoRanque;
@@ -31,14 +34,18 @@ public class Ranque {
     }
 
     public void criarRanque(int id, ArrayList<String> aux) {
+        blockIdRank.get(id).add(contagem);
+        blockVote.get(id).add(votos = new ArrayList<>());
         for (int i = 0; i < aux.size(); i++) {
-            vote.get(id).add(aux.get(i));
+            blockVote.get(id).get(blockIdRank.get(id).get(contagem)).add(aux.get(i));
             countVote.get(id).add(0);
         }
+        contagem++;
     }
 
     public void ranqueUser() {
-        vote.add(votos = new ArrayList<>());
+        blockIdRank.add(idRank = new ArrayList<>());
+        blockVote.add(vote = new ArrayList<>());
         countVote.add(contVotos = new ArrayList<>());
         tittleRank.add(tituloDoRanque = new ArrayList<>());
         dateFinish.add(dataDeTermino = new ArrayList<>());
@@ -92,8 +99,18 @@ public class Ranque {
         return tittleRank.get(id).get(posicao);
     }
 
-    public String getVotos(int id, int posicao) {
-        return vote.get(id).get(posicao);
+    public int tamanhoDoVetorTitulo(int id)
+    {
+        return tittleRank.get(id).size();
+    }
+
+    public String getVotos(int id, int idRank, int posicao) {
+        return blockVote.get(id).get(blockIdRank.get(id).get(idRank)).get(posicao);
+    }
+
+    public int getVetorVotos(int id, int idRank)
+    {
+        return blockVote.get(id).get(blockIdRank.get(id).get(idRank)).size();
     }
 
     public int tamanhoDoVetor(int id) {
@@ -104,11 +121,12 @@ public class Ranque {
         return countVote.get(id).get(posicao);
     }
 
+
     public LocalDate getDataDeTermino(int id, int posicao) {
         return dateFinish.get(id).get(posicao);
     }
 
-    public void setDataDeTermino(int id,LocalDate dataDeTermino) {
+    public void setDataDeTermino(int id, LocalDate dataDeTermino) {
         this.dateFinish.get(id).add(dataDeTermino);
     }
 
@@ -127,4 +145,9 @@ public class Ranque {
     public void setTipoRanque(int id, Boolean tipoRanque) {
         this.typeRank.get(id).add(tipoRanque);
     }
+
+    public void setContagem(int contagem) {
+        this.contagem = contagem;
+    }
+
 }

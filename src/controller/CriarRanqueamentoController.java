@@ -179,8 +179,7 @@ public class CriarRanqueamentoController {
     }
 
     private void criarRanque() {
-            ranque.criarRanque(id, escolhas);
-
+        ranque.criarRanque(id, escolhas);
         ranque.adicionarNomeDoRanque(id, tfNomeDoRanque.getText());
         ranque.setDataDeInicio(id, dataDeInicio);
         ranque.setDataDeTermino(id, dataDeTermino);

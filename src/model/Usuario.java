@@ -24,10 +24,12 @@ public class Usuario {
     }
 
     public boolean validarLogin(String username, String pass) {
-        for (int i = 0; i < id.size(); i++) {
-            if (apelido.get(i).equals(username) && senha.get(i).equals(pass))
-                idUser = i;
+        for(int index = 0; index < id.size(); index++){
+            if (apelido.get(index).equals(username) && senha.get(index).equals(pass)){
+                idUser = index;
+                ranque.setContagem(0);
                 return true;
+            }
         }
         msgLoginErro();
         return false;

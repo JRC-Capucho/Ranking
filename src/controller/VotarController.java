@@ -28,8 +28,10 @@ public class VotarController implements Initializable {
     private Ranque ranque = new Ranque();
     private Usuario user = new Usuario();
     private PerfilController perfilController = new PerfilController();
+    private RanquesController ranquesController = new RanquesController();
     private static Boolean jaVotou = false;
     private int id = user.getIdUser();
+    private int idRanque = ranquesController.getIdRanque();
 
     @FXML
     private Label lbNomeRanque;
@@ -82,13 +84,10 @@ public class VotarController implements Initializable {
     }
 
     private void tabelaVotos() {
-        String[] aux = new String[ranque.tamanhoDoVetor(id)];
-        for (int i = 0; i < aux.length; i++)
-            aux[i] = ranque.getVotos(id, i);
+        System.out.println(idRanque);
+        for (int i = 0; i < ranque.getVetorVotos(id, idRanque); i++) {
 
-        for (int i = 0; i < ranque.tamanhoDoVetor(id); i++) {
-
-            Items ite = new Items(aux[i]);
+            Items ite = new Items(ranque.getVotos(id,idRanque, i));
             ObservableList<Items> lista = tbRanqueDeVotos.getItems();
 
             lista.add(ite);
@@ -106,10 +105,11 @@ public class VotarController implements Initializable {
             System.out.println("entrou no if");
             perfilController.setExisteRanque(false);
         }
+        
     }
 
-    private void nomeDoRanque() {
-        lbNomeRanque.setText(ranque.retornaNomeDoRanque(id,0));
+    public void nomeDoRanque() {
+        lbNomeRanque.setText(ranque.retornaNomeDoRanque(id,idRanque));
     }
 
     private void voltarPerfil() {
@@ -126,4 +126,11 @@ public class VotarController implements Initializable {
         VoteRanque.getStage().close();
     }
 
+    public int getIdRanque() {
+        return idRanque;
+    }
+
+    public void setIdRanque(int idRanque) {
+        this.idRanque = idRanque;
+    }
 }

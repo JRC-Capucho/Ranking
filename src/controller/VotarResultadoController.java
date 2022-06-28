@@ -26,7 +26,9 @@ public class VotarResultadoController implements Initializable{
 
     private Ranque ranque = new Ranque();
     private Usuario user = new Usuario();
+    private RanquesController ranquesController = new RanquesController();
     private int id = user.getIdUser();
+    private int idRanque = ranquesController.getIdRanque();
 
     @FXML
     private Button btVoltar1;
@@ -48,7 +50,7 @@ public class VotarResultadoController implements Initializable{
         itemColocacaoCol.setCellValueFactory(new PropertyValueFactory<Items, Integer>("posicaoItem"));
         itemMelhorRanqueadoCol.setCellValueFactory(new PropertyValueFactory<Items, String>("item"));
 
-        nomeDoRanque(id);
+        nomeDoRanque();
         ordemVotos();
 
         btVoltar1.setOnMouseClicked((MouseEvent e)->{
@@ -84,7 +86,7 @@ public class VotarResultadoController implements Initializable{
         
         for (int i = 0; i < ranqueamento.length; i++) {
 
-            Items ite = new Items(ranque.getVotos(id,ranqueamento[i]),ranque.getContVotos(id,ranqueamento[i]));
+            Items ite = new Items(ranque.getVotos(id,idRanque,ranqueamento[i]),ranque.getContVotos(id,ranqueamento[i]));
             ObservableList<Items> lista = tbRanqueResultado.getItems();
 
             lista.add(ite);
@@ -92,9 +94,9 @@ public class VotarResultadoController implements Initializable{
         }
     }
 
-    private void nomeDoRanque(int posicao)
+    private void nomeDoRanque()
     {
-        lbNomeRanqueResultado.setText(ranque.retornaNomeDoRanque(id,posicao));
+        lbNomeRanqueResultado.setText(ranque.retornaNomeDoRanque(id,idRanque));
     }
 
     private void chamarPerfil()
@@ -105,7 +107,6 @@ public class VotarResultadoController implements Initializable{
                 perfil.start(new Stage());
             } catch (Exception e) {
             }
-            
     }
 
     private void fechar()
@@ -113,4 +114,11 @@ public class VotarResultadoController implements Initializable{
         VotarResultado.getStage().close();
     }
 
+    public int getIdRanque() {
+        return idRanque;
+    }
+
+    public void setIdRanque(int idRanque) {
+        this.idRanque = idRanque;
+    }
 }

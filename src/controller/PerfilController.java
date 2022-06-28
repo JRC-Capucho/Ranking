@@ -17,10 +17,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Items;
+import model.Ranque;
 import model.Usuario;
 import viewii.CriarRanqueamento;
 import viewii.Login;
 import viewii.Perfil;
+import viewii.Ranques;
 import viewii.VotarResultado;
 import viewii.VoteRanque;
 
@@ -69,7 +71,7 @@ public class PerfilController implements Initializable{
         btResultadoRanqueado.setDisable(existeRanque);
 
         btResultadoRanqueado.setOnMouseClicked((MouseEvent e)->{
-            chamarResultado();
+            //chamarResultado();
         });
 
         
@@ -156,10 +158,10 @@ public class PerfilController implements Initializable{
 
     private void chamarVotarRanque()
     {
-        VoteRanque voteRanque = new VoteRanque();
+        Ranques ranques = new Ranques();
         fechar();
         try {
-            voteRanque.start(new Stage());
+            ranques.start(new Stage());
         } catch (Exception e) {
         }
     }
