@@ -184,6 +184,7 @@ public class CriarRanqueamentoController {
         ranque.setDataDeInicio(id, dataDeInicio);
         ranque.setDataDeTermino(id, dataDeTermino);
         ranque.setTipoRanque(id, tipoRanque);
+        perfilController.setExisteRanque(false);
         perfilController.setRestrigirAcesso(false);
         msgRanqueCriado();
         voltarPerfil();

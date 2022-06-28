@@ -16,7 +16,8 @@ public class Ranque {
     private static ArrayList<Integer> idRank;
     private static ArrayList<ArrayList<String>> tittleRank = new ArrayList<>();
     private static ArrayList<String> tituloDoRanque;
-    private static ArrayList<ArrayList<Integer>> countVote = new ArrayList<>();
+    private static ArrayList<ArrayList<ArrayList<Integer>>> blockVoto = new ArrayList<>();
+    private static ArrayList<ArrayList<Integer>> countVote;
     private static ArrayList<Integer> contVotos;
     private static ArrayList<ArrayList<ArrayList<String>>> blockVote = new ArrayList<>();
     private static ArrayList<ArrayList<String>> vote;
@@ -36,14 +37,16 @@ public class Ranque {
     public void criarRanque(int id, ArrayList<String> aux) {
         blockIdRank.get(id).add(contagem);
         blockVote.get(id).add(votos = new ArrayList<>());
+        blockVoto.get(id).add(contVotos = new ArrayList<>());
         for (int i = 0; i < aux.size(); i++) {
             blockVote.get(id).get(blockIdRank.get(id).get(contagem)).add(aux.get(i));
-            countVote.get(id).add(0);
+            blockVoto.get(id).get(blockIdRank.get(id).get(contagem)).add(0);
         }
         contagem++;
     }
 
     public void ranqueUser() {
+        blockVoto.add(countVote = new ArrayList<>());
         blockIdRank.add(idRank = new ArrayList<>());
         blockVote.add(vote = new ArrayList<>());
         countVote.add(contVotos = new ArrayList<>());
@@ -53,8 +56,8 @@ public class Ranque {
         typeRank.add(tipoRanque = new ArrayList<>());
     }
 
-    public void contagemVotos(int id, int posicao) {
-        countVote.get(id).set(posicao, (countVote.get(id).get(posicao) + 1));
+    public void contagemVotos(int id,int idRanque, int posicao) {
+        blockVoto.get(id).get(blockIdRank.get(id).get(idRanque)).set(posicao, (blockVoto.get(id).get(blockIdRank.get(id).get(idRanque)).get(posicao) + 1));
     }
 
     public String adicionarOpcoesDeEscolha() {
@@ -113,14 +116,13 @@ public class Ranque {
         return blockVote.get(id).get(blockIdRank.get(id).get(idRank)).size();
     }
 
-    public int tamanhoDoVetor(int id) {
-        return countVote.get(id).size();
+    public int tamanhoDoVetor(int id, int idRank) {
+        return blockVoto.get(id).get(blockIdRank.get(id).get(idRank)).size();
     }
 
-    public int getContVotos(int id, int posicao) {
-        return countVote.get(id).get(posicao);
+    public int getContVotos(int id, int posicao, int idRank) {
+        return blockVoto.get(id).get(blockIdRank.get(id).get(idRank)).get(posicao);
     }
-
 
     public LocalDate getDataDeTermino(int id, int posicao) {
         return dateFinish.get(id).get(posicao);

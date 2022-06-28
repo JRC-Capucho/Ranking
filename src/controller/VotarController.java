@@ -98,14 +98,8 @@ public class VotarController implements Initializable {
     private void votarNaEscolha() {
         btEnviar.setDisable(true);
         int posicao = tbRanqueDeVotos.getSelectionModel().getSelectedIndex();
-        ranque.contagemVotos(id,posicao);
-        perfilController.setRestrigirAcesso(true);
-
-        if (ranque.getDataDeInicio(id, 0).equals(LocalDate.now()) && ranque.getTipoRanque(id, 0)) {
-            System.out.println("entrou no if");
-            perfilController.setExisteRanque(false);
-        }
-        
+        ranque.contagemVotos(id,idRanque, posicao);
+        perfilController.setRestrigirAcesso(false);
     }
 
     public void nomeDoRanque() {

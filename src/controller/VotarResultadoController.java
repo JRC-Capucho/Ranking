@@ -65,12 +65,12 @@ public class VotarResultadoController implements Initializable{
 
     private void ordemVotos()
     {
-        int[] aux = new int[ranque.tamanhoDoVetor(id)];
-        int[] ranqueamento = new int[ranque.tamanhoDoVetor(id)];
+        int[] aux = new int[ranque.tamanhoDoVetor(id, idRanque)];
+        int[] ranqueamento = new int[ranque.tamanhoDoVetor(id, idRanque)];
         int maiorPosicao = 0;
 
         for (int i = 0; i < aux.length; i++) 
-            aux[i] = ranque.getContVotos(id,i);
+            aux[i] = ranque.getContVotos(id,idRanque, i);
         
 
         for (int i = 0; i < ranqueamento.length; i++) {
@@ -86,7 +86,7 @@ public class VotarResultadoController implements Initializable{
         
         for (int i = 0; i < ranqueamento.length; i++) {
 
-            Items ite = new Items(ranque.getVotos(id,idRanque,ranqueamento[i]),ranque.getContVotos(id,ranqueamento[i]));
+            Items ite = new Items(ranque.getVotos(id,idRanque,ranqueamento[i]),ranque.getContVotos(id, idRanque, ranqueamento[i]));
             ObservableList<Items> lista = tbRanqueResultado.getItems();
 
             lista.add(ite);

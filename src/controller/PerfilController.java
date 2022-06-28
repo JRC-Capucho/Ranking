@@ -23,6 +23,7 @@ import viewii.CriarRanqueamento;
 import viewii.Login;
 import viewii.Perfil;
 import viewii.Ranques;
+import viewii.RanquesResultados;
 import viewii.VotarResultado;
 import viewii.VoteRanque;
 
@@ -71,7 +72,7 @@ public class PerfilController implements Initializable{
         btResultadoRanqueado.setDisable(existeRanque);
 
         btResultadoRanqueado.setOnMouseClicked((MouseEvent e)->{
-            //chamarResultado();
+            chamarResultado();
         });
 
         
@@ -98,7 +99,6 @@ public class PerfilController implements Initializable{
         btLogout.setOnMouseClicked((MouseEvent e)->{
             voltarLogin();
         });
-
         
         btLogout.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER)
@@ -146,15 +146,14 @@ public class PerfilController implements Initializable{
 
     private void chamarResultado()
     {
-        VotarResultado resultado = new VotarResultado();
+        RanquesResultados rr = new RanquesResultados();
         fechar();
         try {
-            resultado.start(new Stage());
+            rr.start(new Stage());
         } catch (Exception e) {
             //TODO: handle exception
         }
     }
-
 
     private void chamarVotarRanque()
     {

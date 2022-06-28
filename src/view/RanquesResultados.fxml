@@ -41,7 +41,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="598.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RanquesController">
+<VBox prefHeight="598.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RanquesResultadosController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #003366;" VBox.vgrow="ALWAYS">
          <children>
@@ -61,12 +61,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label fx:id="Ran" layoutX="286.0" layoutY="36.0" text="Ranques" textFill="WHITE">
+            <Label fx:id="ranquesResultados" layoutX="163.0" layoutY="36.0" text=" Ranques Resultados" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="48.0" />
                </font>
             </Label>
-            <TableView fx:id="tbRanques" layoutX="78.0" layoutY="105.0" prefHeight="388.0" prefWidth="589.0">
+            <TableView fx:id="tbRanquesResultados" layoutX="78.0" layoutY="105.0" prefHeight="388.0" prefWidth="589.0">
               <columns>
                 <TableColumn fx:id="tcItems" prefWidth="75.0" text="Items" />
               </columns>
